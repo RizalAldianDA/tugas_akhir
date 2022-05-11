@@ -75,8 +75,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="nomor">Nomor HP</label>
-                            <textarea class="form-control" id="nomor" rows="3"name="nomor">{{ old('nomor') ?? $ketua->nomorhp}}</textarea>
+                            <input type="hidden" class="form-control @error('nomor') is-invalid @enderror" id="nomor" name="nomor" value="{{ old('nomor') ?? $ketua->nomor }}">
+                            @error('nomor')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Update</button>
                     </form>

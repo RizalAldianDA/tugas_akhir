@@ -88,7 +88,7 @@
                         <td><a href="{{ route('wargaall.detailall',['warga' => $akun->nik]) }}">{{$akun->nik}}</a></td>
                         <td>{{$akun->nokk}}</td>
                         <td>{{$akun->nama}}</td>
-                        <td>{{$akun->gender}}</td>
+                        <td>{{$akun->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</td>
                         <td>{{date('d F Y', strtotime($akun->tanggal_lahir))}}</td>
                         <td>{{$akun->rt}}</td>
                         <td>{{$akun->rw}}</td>

@@ -257,11 +257,20 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="gender">Jenis Kelamin</label>
-                                <input type="text" class="form-control @error('gender') is-invalid @enderror" id="gender" name="gender" value="{{ old('gender') }}">
+                                <label>Jenis Kelamin</label>
+                                <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="laki_laki" value="l" {{ old('gender')=='l' ? 'checked': '' }} >
+                                    <label class="form-check-label" for="laki_laki">Laki-laki</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="perempuan" value="p" {{ old('gender')=='p' ? 'checked': '' }} >
+                                    <label class="form-check-label" for="perempuan">Perempuan</label>
+                                </div>
                                 @error('gender')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="tanggal_lahir">Tanggal Lahir</label>

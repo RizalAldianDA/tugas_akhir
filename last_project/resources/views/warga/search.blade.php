@@ -232,9 +232,7 @@
                     <div class="col-12">
                     <div class="py-4 d-flex justify-content-end align-items-center">
                         <h2 class="mr-auto">Daftar Warga</h2>
-
                         <form class="form-inline my-2 my-lg-0" action="{{route('warga.search')}}" method="GET">
-                            <select class="form-control" name="tipe" id="tipe">
                                 <select class="form-control" name="tipe" id="tipe">
                                     @if ($tipe=="nik"){
                                         <option value="nik" selected> NIK
@@ -262,8 +260,7 @@
                                     }
                                     @endif
                                 </select>
-                            </select>
-                            <input id="name" class="form-control mr-sm-2" type="text" name="cari" placeholder="Cari" aria-label="Search" value="{{old('cari')}}">
+                            <input id="name" class="form-control mr-sm-2" type="text" name="cari" placeholder="Cari" aria-label="Search" value="{{$word}}">
                             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="cari"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
@@ -296,7 +293,7 @@
                                 <td><a href="{{ route('warga.showwarga',['profil' => $akun->nik]) }}">{{$akun->nik}}</a></td>
                                 <td>{{$akun->nokk}}</td>
                                 <td>{{$akun->nama}}</td>
-                                <td>{{$akun->gender}}</td>
+                                <td>{{$akun->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</td>
                                 <td>{{date('d F Y', strtotime($akun->tanggal_lahir))}}</td>
                                 <td>{{$akun->rt}}</td>
                                 <td>{{$akun->rw}}</td>

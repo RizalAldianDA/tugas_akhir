@@ -8,6 +8,7 @@ use App\Vaksinasi;
 use App\Imports\WargaImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class WargaController extends Controller
 {
@@ -43,7 +44,7 @@ class WargaController extends Controller
         'nik' => 'required|size:16,unique:wargas',
         'nokk' => 'required',
         'nama' => 'required|min:3|max:50',
-        'gender' => 'required',
+        'gender' => 'required|in:p,l',
         'tanggal_lahir' => 'required',
         'rt' => 'required',
         'rw' => 'required',
@@ -94,7 +95,7 @@ class WargaController extends Controller
         $validateData = $request->validate([
         'nik' => 'required|size:16,unique:wargas',
         'nokk' => 'required',
-        'gender' => 'required',
+        'gender' => 'required|in:p,l',
         'tanggal_lahir' => 'required',
         'rt' => 'required',
         'rw' => 'required',
@@ -108,12 +109,23 @@ class WargaController extends Controller
         $warga->tanggal_lahir = $validateData['tanggal_lahir'];
         $warga->rt = $validateData['rt'];
         $warga->rw = $validateData['rw'];
-        $warga->passwordwarga = $validateData['passwordwarga'];
+
+        $password = bcrypt($validateData['passwordwarga']);
+        $warga->passwordwarga = $password;
+
         $warga->nomorhp = $validateData['nomorhp'];
         $warga->alamat = $validateData['alamat'];
         $warga->save();
         $request->session()->flash('pesan','Perubahan biodata warga berhasil');
-        return redirect()->route('wargaall.detailall',['warga' => $warga->nik]);
+        if($warga->passwordwarga != null){
+            session(['check' => 'yes']);
+            return redirect()->route('wargaall.detailall',['warga' => $warga->nik]);
+        }
+        else{
+            session(['check' => 'no']);
+            return redirect()->route('wargaall.detailall',['warga' => $warga->nik]);
+        }
+        
     }
     public function destroy(Request $request, Warga $warga)
     {
@@ -137,22 +149,25 @@ class WargaController extends Controller
         if($result){
             if (($result->passwordwarga == null)){
                 if(($request->passwordwarga == $result->tanggal_lahir)){
-                    session(['nik' => $request->nik,'nama' => $result->nama]);
+                    session(['nik' => $request->nik,'nama' => $result->nama,'check' => 'no']);
                     return redirect('/warga/beranda')->withInput()->with('pesan',"Tolong isi kata sandi sebelum melakukan pengisian data vaksinasi");
                 }
                 else{
-                    return back()->withInput()->with('pesan',"Login Gagal");
+                    return back()->withInput()->with('pesan',"Tanggal lahir salah");
                 }
             }
             elseif(($result->passwordwarga != null)){
-                if (($request->passwordwarga == $result->passwordwarga))
+                if (Hash::check($request->passwordwarga, $result->passwordwarga))
                 {
-                    session(['nik' => $request->nik,'nama' => $result->nama]);
+                    session(['nik' => $request->nik,'nama' => $result->nama,'check' => 'yes']);
                     return redirect('/warga/beranda');
                 }
-                else {
-                    return back()->withInput()->with('pesan',"Login Gagal");
+                else{
+                    return back()->withInput()->with('pesan',"Password salah");
                 }
+            }
+            else{
+                return back()->withInput()->with('pesan',"Login Gagal");
             }
         }
         else{
@@ -181,7 +196,7 @@ class WargaController extends Controller
         $validateData = $request->validate([
         'nik' => 'required|size:16,unique:wargas',
         'nokk' => 'required',
-        'gender' => 'required',
+        'gender' => 'required|in:p,l',
         'tanggal_lahir' => 'required',
         'rt' => 'required',
         'rw' => 'required',
@@ -196,14 +211,24 @@ class WargaController extends Controller
         $warga->tanggal_lahir = $validateData['tanggal_lahir'];
         $warga->rt = $validateData['rt'];
         $warga->rw = $validateData['rw'];
-        $warga->passwordwarga = $validateData['passwordwarga'];
+        
+        $password = bcrypt($validateData['passwordwarga']);
+        $warga->passwordwarga = $password;
+
         $warga->nomorhp = $validateData['nomorhp'];
         $warga->alamat = $validateData['alamat'];
         $warga->status = $validateData['status'];
         $warga->save();
         $request->session()->flash('pesan','Perubahan biodata warga berhasil');
-        session(['check' => $warga->passwordwarga]);
-        return redirect()->route('pagewarga.profilwarga',['warga' => $warga->nik]);
+        if($warga->passwordwarga != null){
+            session(['check' => 'yes']);
+            return redirect()->route('pagewarga.profilwarga',['warga' => $warga->nik]);
+        }
+        else{
+            session(['check' => 'no']);
+            return redirect()->route('pagewarga.profilwarga',['warga' => $warga->nik]);
+        }
+        
     }
 
 }

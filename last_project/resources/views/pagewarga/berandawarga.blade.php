@@ -200,9 +200,13 @@
                                 <li class="nav-item">
                                     <a class="active" style="background-color: #cccccc" href="{{route('pagewarga.berandawarga')}}">BERANDA</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{route('vaksin.index')}}">VAKSINASI</a>
-                                </li>
+                                
+                                @if((session('check')=='yes'))
+                                    <li class="nav-item">
+                                        <a href="{{route('vaksin.index')}}">VAKSINASI</a>
+                                    </li>
+                                @elseif((session('check')=='no'))
+                                @endif
                                 <li class="nav-item">
                                     <a href="">TENTANG KAMI</a>
                                 </li>
@@ -235,14 +239,13 @@
                         </div>
                         @endif
                         @php
-                        if(session()->has('check')){
+                        if(session('check')=='yes'){
                             echo "yes";
                         }
                         else{
                             echo "no";
                         }
                         @endphp
-                        
                     </div>
                 </div>
             </div>

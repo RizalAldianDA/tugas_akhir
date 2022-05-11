@@ -4,7 +4,7 @@
       <!-- Sidebar user panel 
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../../../web_sistem_data/vendor/almasaeed2010/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="../../../last_project/vendor/almasaeed2010/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>

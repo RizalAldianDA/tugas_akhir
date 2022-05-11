@@ -240,7 +240,7 @@
                         <ul>
                             <li>NIK: {{$wargas->nik}} </li>
                             <li>NO KK: {{$wargas->nokk}}</li>
-                            <li>Jenis Kelamin: {{$wargas->gender}}</li>
+                            <li>Jenis Kelamin: {{$wargas->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</li>
                             <li>Tanggal Lahir: {{date('d F Y', strtotime($wargas->tanggal_lahir))}}</li>
                             <li>RT : {{$wargas->rt}}</li>
                             <li>RW : {{$wargas->rw}}</li>

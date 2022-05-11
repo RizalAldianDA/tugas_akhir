@@ -275,21 +275,21 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="nomorhp">nomorhp</label>
+                                <label for="nomorhp">Nomor HP</label>
                                 <input type="text" class="form-control @error('nomorhp') is-invalid @enderror" id="nomorhp" name="nomorhp" value="{{ old('nomorhp') ?? $wargas->nomorhp }}">
                                 @error('nomorhp')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="alamat">alamat</label>
+                                <label for="alamat">Alamat</label>
                                 <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" value="{{ old('alamat') ?? $wargas->alamat }}">
                                 @error('alamat')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="status">status</label>
+                                <label for="status">Status</label>
                                 <select class="form-control" name="status" id="status">
                                     <option value="Tidak Terpapar Covid" {{ (old('status') ?? $wargas->status)=='Tidak Terpapar Covid' ? 'selected': '' }} > Tidak Terpapar Covid
                                     </option>

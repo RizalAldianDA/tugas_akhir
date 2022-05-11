@@ -20,13 +20,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ url('') }}/web_sistem_data/vendor/almasaeed2010/adminlte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="{{ url('') }}/last_project/vendor/almasaeed2010/adminlte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">{{session()->get('usernameadmin')}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{ url('') }}/web_sistem_data/vendor/almasaeed2010/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{ url('') }}/last_project/vendor/almasaeed2010/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   {{session()->get('usernameadmin')}}
