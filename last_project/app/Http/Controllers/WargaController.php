@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Warga;
 use App\Vaksinasi;
+use App\Info;
 
 use App\Imports\WargaImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -138,7 +139,10 @@ class WargaController extends Controller
 
     public function index3()
     {
-        return view('loginwarga.login');
+        $info = Info::where ('tipe','=','log')
+        ->where('status','=','ON')
+        ->first();
+        return view('loginwarga.login',['info' => $info]);
     }
     public function process(Request $request){
         $validateData = $request->validate([
@@ -181,8 +185,27 @@ class WargaController extends Controller
 
     public function beranda()
     {
-        return view('pagewarga.berandawarga');
+        if(session('check')=='no'){
+            $info = Info::where('tipe','=','bnp')
+            ->where('status','=','ON')
+            ->first();
+        }
+        elseif(session('check')=='yes'){
+            $info = Info::where('tipe','=','bp')
+            ->where('status','=','ON')
+            ->first();
+        }
+        return view('pagewarga.berandawarga',['info' => $info]);
     }
+
+    public function about()
+    {
+        $info = Info::where ('tipe','=','ab')
+        ->where('status','=','ON')
+        ->first();
+        return view('pagewarga.tentangkami',['info' => $info]);
+    }
+
     public function profil($warga_nik){
         $warga = Warga::where('nik','=',$warga_nik)->first();    
         return view('pagewarga.profilwarga',['wargas' => $warga]);

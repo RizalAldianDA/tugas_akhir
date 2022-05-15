@@ -18,7 +18,7 @@ class CreateWargasTable extends Migration
             $table->string('nik');
             $table->string('nokk');
             $table->string('nama');
-            $table->string('gender');
+            $table->string('gender',1);
             $table->date('tanggal_lahir');
             $table->integer('rt');
             $table->integer('rw');

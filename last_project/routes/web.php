@@ -51,12 +51,20 @@ Route::get('/admin/warga/{warga}/edit','WargaController@editall')->name('wargaal
 Route::patch('/admin/warga/{warga}','WargaController@updateall')->name('wargaall.updateall')->middleware('login_auth');
 Route::delete('/admin/warga/{warga}', 'WargaController@destroy')->name('warga.destroy')->middleware('login_auth');
 
+Route::get('/admin/info/create','InfoController@create')->name('info.create')->middleware('login_auth');
+Route::post('/admin/info','InfoController@store')->name('info.store')->middleware('login_auth');
+Route::get('/admin/info','InfoController@index')->name('info.index')->middleware('login_auth');
+Route::get('/admin/info/{info}/edit','InfoController@edit')->name('info.edit')->middleware('login_auth');
+Route::patch('/admin/info/{info}','InfoController@update')->name('info.update')->middleware('login_auth');
+Route::delete('/admin/info/{info}', 'InfoController@destroy')->name('info.destroy')->middleware('login_auth');
+
 /*Ketua RT Route */
 Route::get('/ketua/warga/cari', 'KetuaController@search')->name('warga.search')->middleware('login_auth_ketua');
+Route::get('/ketua/tentang-kami', 'KetuaController@about')->name('pageketua.tentangkami')->middleware('login_auth_ketua');
 Route::get('/ketua/warga/tambah-warga', 'WargaController@addwarga')->name('warga.addwarga')->middleware('login_auth_ketua');
 Route::get('/ketua/warga', 'WargaController@index')->name('warga.index')->middleware('login_auth_ketua');
 Route::get('/ketua/warga/{profil}','WargaController@showwarga')->name('warga.showwarga')->middleware('login_auth_ketua');
-Route::get('ketua/warga/tambah-warga/manual-warga', 'WargaController@create')->name('warga.create')->middleware('login_auth_ketua');
+Route::get('/ketua/warga/tambah-warga/manual-warga', 'WargaController@create')->name('warga.create')->middleware('login_auth_ketua');
 Route::post('/ketua/warga', 'WargaController@store')->name('warga.store')->middleware('login_auth_ketua');
 Route::get('/ketua/warga/tambah-warga/import-warga', 'WargaController@createexcel')->name('warga.createexcel')->middleware('login_auth_ketua');
 Route::post('/ketua/warga/tambah-warga/import-warga','WargaController@wargaimport')->name('warga.autocreate')->middleware('login_auth_ketua');
@@ -66,7 +74,8 @@ Route::patch('/ketua/profil/{ketua}','KetuaController@updateketua')->name('pagek
 
 /*Warga Route */
 Route::get('/warga/beranda', 'WargaController@beranda')->name('pagewarga.berandawarga')->middleware('login_auth_warga');
-Route::get('warga/vaksinasi/create', 'VaksinasiController@create')->name('vaksin.create')->middleware('login_auth_warga');
+Route::get('/warga/tentang-kami', 'WargaController@about')->name('pagewarga.tentangkami')->middleware('login_auth_warga');
+Route::get('/warga/vaksinasi/create', 'VaksinasiController@create')->name('vaksin.create')->middleware('login_auth_warga');
 Route::post('/warga/vaksinasi', 'VaksinasiController@store')->name('vaksin.store')->middleware('login_auth_warga');
 Route::get('/warga/vaksinasi', 'VaksinasiController@index')->name('vaksin.index')->middleware('login_auth_warga');
 Route::get('/warga/vaksinasi/{vaksinasi}', 'VaksinasiController@show')->name('vaksin.show')->middleware('login_auth_warga');

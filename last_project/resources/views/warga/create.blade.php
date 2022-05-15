@@ -208,7 +208,7 @@
                                     <a class="active" style="background-color: #cccccc" href="{{route('warga.addwarga')}}">TAMBAH WARGA</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="">TENTANG KAMI</a>
+                                    <a href="{{route('pageketua.tentangkami')}}">TENTANG KAMI</a>
                                 </li>
                                 <li class="nav-item">
                                     <div class="dropdown">

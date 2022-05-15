@@ -29,6 +29,14 @@
             </span>
           </a>
         </li>
+        <li>
+          <a href="{{route('info.index')}}">
+            <i class="fa fa-info-circle"></i>
+            <span>Website Information</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
       </ul>
     </section>
   </aside>

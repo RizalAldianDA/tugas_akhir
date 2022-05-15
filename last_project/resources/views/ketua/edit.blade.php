@@ -82,7 +82,6 @@
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Update</button>
                     </form>
-                </div>
             </section> 
             <!-- /.content -->
         </div>

@@ -7,16 +7,16 @@
         <title>Profil {{$ketua->name}}</title>
     </head>
     <body>
-        @extends('admin_layout_warga.app')
+        @extends('admin_layout_ketua.app')
         @section('header')
-        @include('admin_layout_warga.header')
+        @include('admin_layout_ketua.header')
         @endsection
         @section('leftbar')
-        @include('admin_layout_warga.leftbar')
+        @include('admin_layout_ketua.leftbar')
         
         @endsection
         @section('rightbar')
-        @include('admin_layout_warga.rightbar')
+        @include('admin_layout_ketua.rightbar')
         @endsection
         @section('content')
         <div class="content-wrapper">
@@ -48,7 +48,6 @@
                         <li>RW: {{$ketua->rw}} </li>
                         <li>Nomor HP:{{$ketua->nomorhp == '' ? 'N/A' : $ketua->nomorhp}}</li>
                     </ul>
-                </div>
             </section> 
             <!-- /.content -->
         </div>

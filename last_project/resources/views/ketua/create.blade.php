@@ -7,16 +7,16 @@
         <title>Pendaftaran Ketua RT</title>
     </head>
     <body>
-        @extends('admin_layout_warga.app')
+        @extends('admin_layout_ketua.app')
         @section('header')
-        @include('admin_layout_warga.header')
+        @include('admin_layout_ketua.header')
         @endsection
         @section('leftbar')
-        @include('admin_layout_warga.leftbar')
+        @include('admin_layout_ketua.leftbar')
         
         @endsection
         @section('rightbar')
-        @include('admin_layout_warga.rightbar')
+        @include('admin_layout_ketua.rightbar')
         @endsection
         @section('content')
         <div class="content-wrapper">
@@ -81,7 +81,6 @@
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Daftar</button>
                     </form>
-                </div>
             </section> 
             <!-- /.content -->
         </div>

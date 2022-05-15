@@ -208,7 +208,7 @@
                                 @elseif((session('check')=='no'))
                                 @endif
                                 <li class="nav-item">
-                                    <a href="">TENTANG KAMI</a>
+                                    <a href="{{route('pagewarga.tentangkami')}}">TENTANG KAMI</a>
                                 </li>
                                 <li class="nav-item">
                                     <div class="dropdown">
@@ -238,14 +238,12 @@
                             {{ session()->get('pesan') }}
                         </div>
                         @endif
-                        @php
-                        if(session('check')=='yes'){
-                            echo "yes";
-                        }
-                        else{
-                            echo "no";
-                        }
-                        @endphp
+                        @if($info == null)
+                        @else
+                            {{$info->title}}
+                            <div></div>
+                            {{$info->description}}
+                        @endif
                     </div>
                 </div>
             </div>

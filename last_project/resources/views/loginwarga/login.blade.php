@@ -22,7 +22,7 @@
                 margin: 0 auto !important; 
                 float: none !important;  
                 color:#23408e;
-                padding-top: 15%;      
+                padding-top: 5%;      
             }
             .container{
                 background-color:#cccccc;
@@ -42,8 +42,14 @@
     </head>
     <body>
         <div class="content">
-            <div class="container">
-                <div class="row">
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2 container">
+                    <div class="py-4 d-flex justify-content-end align-items-center">
+                        <h2 class="mr-auto">{{$info->title}}</h2>
+                    </div>
+                    {{$info->description}}
+                </div>
+                <div class="row pure-u-1 pure-u-md-1-2 pure-u-lg-1-2 container">
                     <div class="col-12">
                         <div class="py-4 d-flex justify-content-end align-items-center">
                             <h2 class="mr-auto">Masuk Sebagai Warga</h2>

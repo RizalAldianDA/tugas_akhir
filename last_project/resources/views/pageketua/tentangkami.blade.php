@@ -4,18 +4,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="{{ url('') }}/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <title>Akun Warga</title>
+        <!--Link-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
         <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/base-min.css">
         <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-min.css">
         <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
+  
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <title>Ubah Profil</title>
         <style>
             body{
                 background-color: #cccccc;
+            }
+            .row{
+                background-color: white;
             }
             .content {
                 max-width: 80%; 
@@ -183,7 +188,7 @@
                 }
                 
             }
-        </style>
+        </style>   
     </head>
     <body>
         <div class="botnav">
@@ -203,14 +208,16 @@
                                     <a href="{{route('warga.addwarga')}}">TAMBAH WARGA</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('pageketua.tentangkami')}}">TENTANG KAMI</a>
+                                    <a class="active" style="background-color: #cccccc" href="{{route('pageketua.tentangkami')}}">TENTANG KAMI</a>
                                 </li>
                                 <li class="nav-item">
                                     <div class="dropdown">
-                                        <button  style="background-color: #cccccc ; color:#23408e" class="dropbtn">PENGATURAN <i class="fa fa-caret-down"></i></button>
+                                        <button class="dropbtn">PENGATURAN <i class="fa fa-caret-down"></i></button>
                                         <div class="dropdown-content">
-                                            <a class="active"  style="background-color: #23408e ; color :white" href="{{route('pageketua.profilketua',['ketua' => session()->get('nik')])}}">PROFIL</a>
-                                            <a href="{{route('loginketua.logout')}}">KELUAR</a>
+                                            <div class="dropdown-content">
+                                                <a href="{{route('pageketua.profilketua',['ketua' => session()->get('nik')])}}">PROFIL</a>
+                                                <a href="{{route('loginketua.logout')}}">KELUAR</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -219,59 +226,30 @@
                     </div>
                 </nav>
             </div>
-        </div>        
+        </div>
         <div class="content">
-            <div class="container container-content">
+            <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="pt-3 justify-content-end align-items-center">
-                        <h1 class="h2 mr-auto">Ubah Biodata</h1>
-                        <hr>
-                        <form action="{{ route('pageketua.updateketua',['ketua' => $ketuas->id]) }}" method="POST">
-                            @method('PATCH')
-                            @csrf
-                            <div class="form-group">
-                                <label for="usernameket">Username</label>
-                                <input type="text" class="form-control @error('usernameket') is-invalid @enderror" id="usernameket" name="usernameket" value="{{ old('usernameket') ?? $ketuas->usernameket }}">
-                                @error('usernameket')
-                                <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="passwordket">Password</label>
-                                <input type="text" class="form-control @error('passwordket') is-invalid @enderror" id="passwordket" name="passwordket" value="{{ old('passwordket') ?? $ketuas->passwordket }}">
-                                @error('passwordket')
-                                <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" class="form-control @error('rt') is-invalid @enderror" id="rt" name="rt" value="{{ old('rt') ?? $ketuas->rt }}">
-                                @error('rt')
-                                <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" class="form-control @error('rw') is-invalid @enderror" id="rw" name="rw" value="{{ old('rw') ?? $ketuas->rw }}">
-                                @error('rw')
-                                <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="nomorhp">Nomor Hp</label>
-                                <input type="text" class="form-control @error('nomorhp') is-invalid @enderror" id="nomorhp" name="nomorhp" value="{{ old('nomorhp') ?? $ketuas->nomorhp }}">
-                                @error('nomorhp')
-                                <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>   
-                            <button type="submit" class="btn btn-primary mb-2">UBAH</button>
-                        </form>
+                        <div class="py-4 d-flex justify-content-end align-items-center">
+                            <h2 class="mr-auto">{{$info->title}}</h2>
                         </div>
+                        @if(session()->has('pesan'))
+                        <div class="alert alert-success">
+                            {{ session()->get('pesan') }}
+                        </div>
+                        @endif
+                        @if($info == null)
+                        @else
+                            {{$info->description}}
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 </html>

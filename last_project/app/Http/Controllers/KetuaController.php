@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ketua;
 use App\Warga;
+use App\Info;
 use Illuminate\Http\Request;
 
 class KetuaController extends Controller
@@ -146,4 +147,11 @@ class KetuaController extends Controller
 		return view('warga.search',['cari' => $word,'word'=>$cari,'tipe'=>$tipe]);
  
 	}
+    public function about()
+    {
+        $info = Info::where ('tipe','=','ab')
+        ->where('status','=','ON')
+        ->first();
+        return view('pageketua.tentangkami',['info' => $info]);
+    }
 }
