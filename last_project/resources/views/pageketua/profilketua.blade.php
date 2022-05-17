@@ -239,7 +239,7 @@
                             <li>RT : {{$ketuas->rt}}</li>
                             <li>RW : {{$ketuas->rw}}</li>
                             <li>Username : {{$ketuas->usernameket}}</li>
-                            <li>Password : {{$ketuas->passwordket}}</li>
+                            <li>Password : {{$ketuas->passwordket == '' ? 'N/A' : '*************'}}</li>
                             <li>Nomor HP: {{$ketuas->nomorhp == '' ? 'N/A' : $ketuas->nomorhp}}</li>
                         </ul>
                         <a href="{{ route('pageketua.editketua',['ketua' => $ketuas->id]) }}" class="btn btn-primary">UBAH</a>

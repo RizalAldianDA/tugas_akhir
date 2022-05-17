@@ -207,7 +207,7 @@
                                     <a class="active" style="background-color: #cccccc" href="{{route('vaksin.index')}}">VAKSINASI</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="">TENTANG KAMI</a>
+                                    <a href="{{route('pagewarga.tentangkami')}}">TENTANG KAMI</a>
                                 </li>
                                 <li class="nav-item">
                                     <div class="dropdown">

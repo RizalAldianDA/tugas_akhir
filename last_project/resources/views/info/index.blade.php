@@ -65,7 +65,7 @@
                         @forelse ($infos as $data)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$data->tipe == 'bnp' ? 'Beranda Tanpa Pass' : ($data->tipe == 'bp' ? 'Beranda Dengan Pass' : ($data->tipe == 'ab' ? 'Tentang Kami' : 'Login'))}}</td>
+                            <td>{{$data->tipe == 'bnp' ? 'Beranda Tanpa Pass' : ($data->tipe == 'bp' ? 'Beranda Dengan Pass' : ($data->tipe == 'ab' ? 'Tentang Kami' : ($data->tipe == 'log' ? 'Login Warga' : 'Login Ketua')))}}</td>
                             <td>{{$data->title}}</td>
                             <td><span class="main-text"><p>{{$data->description}}</p></span></td>
                             <td>{{$data->status}}</td>

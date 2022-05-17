@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Login Ketua RT</title>
+        <title>Login Warga</title>
         <!--Link-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
@@ -22,7 +22,7 @@
                 margin: 0 auto !important; 
                 float: none !important;  
                 color:#23408e;
-                padding-top: 15%;      
+                padding-top: 5%;      
             }
             .container{
                 background-color:#cccccc;
@@ -38,19 +38,39 @@
                 color:#ffffff;
                 background-color: #ba0d14;
             }
+            .main-text {
+                text-align: justify;
+                max-width: 100%;
+            }
+
+            .main-text p {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                max-width: 100%;
+            }
         </style>
     </head>
     <body>
         <div class="content">
-            <div class="container">
-                <div class="row">
+            <div class="pure-g">
+                @if($info == null)
+                @else
+                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-2-3 container">
+                        <div class="py-4 d-flex justify-content-end align-items-center">
+                            <h2 class="mr-auto">{{$info->title}}</h2>
+                        </div>
+                        <span class="main-text"><p>{{$info->description}}</p></span>
+                    </div>
+                @endif
+                <div class="row pure-u-1 pure-u-md-1-2 pure-u-lg-1-3 container">
                     <div class="col-12">
                         <div class="py-4 d-flex justify-content-end align-items-center">
                             <h2 class="mr-auto">Masuk Sebagai Ketua RT</h2>
                         </div>
                         @if(session()->has('pesan'))
                         <div class="alert alert-success">
-                            {{ session()->get('pesan') }}
+                        {{ session()->get('pesan') }}
                         </div>
                         @endif
                         <form action="{{ route('loginketua.process') }}" method="POST">
@@ -69,7 +89,7 @@
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary mb-2">Masuk</button>
+                            <button type="submit" class="btn">Masuk</button>
                         </form>
                     </div>
                 </div>

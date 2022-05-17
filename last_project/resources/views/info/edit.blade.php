@@ -40,7 +40,9 @@
                                 </option>
                                 <option value="ab" {{ (old('tipe') ?? $info->tipe)=='ab' ? 'selected': '' }} > Hal Tentang Kami
                                 </option>
-                                <option value="log" {{ (old('tipe') ?? $info->tipe)=='log' ? 'selected': '' }} > Login
+                                <option value="log" {{ (old('tipe') ?? $info->tipe)=='log' ? 'selected': '' }} > Login Warga
+                                </option>
+                                <option value="logket" {{ (old('tipe') ?? $info->tipe)=='logket' ? 'selected': '' }} > Login Ketua
                                 </option>
                             </select>                               
                             @error('tipe')

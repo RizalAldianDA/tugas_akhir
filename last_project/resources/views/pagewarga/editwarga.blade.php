@@ -272,7 +272,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="passwordwarga">Password</label>
-                                <input type="text" class="form-control @error('passwordwarga') is-invalid @enderror" id="passwordwarga" name="passwordwarga" value="{{ old('passwordwarga') ?? $wargas->passwordwarga }}">
+                                <input type="text" class="form-control @error('passwordwarga') is-invalid @enderror" id="passwordwarga" name="passwordwarga" value="{{ old('passwordwarga') ?? '************' }}">
                                 @error('passwordwarga')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -286,10 +286,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" value="{{ old('alamat') ?? $wargas->alamat }}">
-                                @error('alamat')
-                                <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                <textarea rows="3" class="form-control" id="alamat" name="alamat">{{ old('alamat') ?? $wargas->alamat }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="status">Status</label>

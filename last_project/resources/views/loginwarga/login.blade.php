@@ -38,18 +38,32 @@
                 color:#ffffff;
                 background-color: #ba0d14;
             }
+            .main-text {
+                text-align: justify;
+                max-width: 100%;
+            }
+
+            .main-text p {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                max-width: 100%;
+            }
         </style>
     </head>
     <body>
         <div class="content">
             <div class="pure-g">
-                <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2 container">
-                    <div class="py-4 d-flex justify-content-end align-items-center">
-                        <h2 class="mr-auto">{{$info->title}}</h2>
+                @if($info == null)
+                @else
+                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-2-3 container">
+                        <div class="py-4 d-flex justify-content-end align-items-center">
+                            <h2 class="mr-auto">{{$info->title}}</h2>
+                        </div>
+                        <span class="main-text"><p>{{$info->description}}</p></span>
                     </div>
-                    {{$info->description}}
-                </div>
-                <div class="row pure-u-1 pure-u-md-1-2 pure-u-lg-1-2 container">
+                @endif
+                <div class="row pure-u-1 pure-u-md-1-2 pure-u-lg-1-3 container">
                     <div class="col-12">
                         <div class="py-4 d-flex justify-content-end align-items-center">
                             <h2 class="mr-auto">Masuk Sebagai Warga</h2>

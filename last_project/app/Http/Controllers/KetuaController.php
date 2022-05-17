@@ -82,7 +82,10 @@ class KetuaController extends Controller
 
     public function index2()
     {
-        return view('loginketua.login');
+        $info = Info::where ('tipe','=','logket')
+        ->where('status','=','ON')
+        ->first();
+        return view('loginketua.login',['info' => $info]);
     }
     public function process(Request $request){
         $validateData = $request->validate([

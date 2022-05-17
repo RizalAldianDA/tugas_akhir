@@ -39,7 +39,9 @@
                                 </option>
                                 <option value="ab" {{ old('tipe')=='ab' ? 'selected': '' }} > Hal Tentang Kami
                                 </option>
-                                <option value="log" {{ old('tipe')=='log' ? 'selected': '' }} > Login
+                                <option value="log" {{ old('tipe')=='log' ? 'selected': '' }} > Login Warga
+                                </option>
+                                <option value="logket" {{ old('tipe')=='logket' ? 'selected': '' }} > Login Ketua
                                 </option>
                             </select>                               
                             @error('tipe')
