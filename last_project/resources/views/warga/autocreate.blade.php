@@ -68,7 +68,8 @@
             }
             .btn{
                 float: right;
-                height: 35px;
+                margin-bottom: 1%;
+                margin-top: 1%;
             }
             /*Dropdown Menu Navigation Bar*/
             .dropdown {
@@ -120,6 +121,24 @@
             }
             .dropbtn-active{
                 color: white !important;
+            }
+            .main-text {
+                    text-align: justify;
+                    max-width: 100%;
+                }
+
+            .main-text p {
+                    white-space: pre-wrap;       /* Since CSS 2.1 */
+                    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+                    white-space: -pre-wrap;      /* Opera 4-6 */
+                    white-space: -o-pre-wrap;    /* Opera 7 */
+                    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    text-align: justify;
+                    color: #23408e;
             }
 
             @media screen and (min-width: 100px)and (max-width: 700px)  {  
@@ -228,30 +247,42 @@
             </div>
         </div>
         <div class="content">
-            <div class="container mt-3">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="py-4 d-flex justify-content-end align-items-center">
-                            <h2 class="mr-auto">Tabel Warga</h2>
-                        </div>
-                        @if(session()->has('pesan'))
-                        <div class="alert alert-success">
-                            {{ session()->get('pesan') }}
-                        </div>
-                        @endif
-                        <div class="form-group">
-                            <form action="{{route('warga.autocreate')}}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <input type="file" name="file" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            </form>
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-1-1 pure-u-lg-1-1 container">
+                    @if($doc == null)
+                    @else
+                        {{$doc->file_name}}
+                        <a class="btn btn-primary" href="{{ url('') }}/{{$doc->file}}">Download</a>
+                        <br><br>
+                        <pre class='main-text'><p>{{$doc->description}}</p></pre>
+                    @endif
+                </div>
+                <div class="pure-u-1 pure-u-md-1-1 pure-u-lg-1-1 container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="py-4 d-flex justify-content-end align-items-center">
+                                <h2 class="mr-auto">Tabel Warga</h2>
+                            </div>
+                            @if(session()->has('pesan'))
+                            <div class="alert alert-success">
+                                {{ session()->get('pesan') }}
+                            </div>
+                            @endif
+                            <div class="form-group">
+                                <form action="{{route('warga.autocreate')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="file" name="file" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <!--Jquery-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

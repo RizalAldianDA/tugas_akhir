@@ -58,6 +58,13 @@ Route::get('/admin/info/{info}/edit','InfoController@edit')->name('info.edit')->
 Route::patch('/admin/info/{info}','InfoController@update')->name('info.update')->middleware('login_auth');
 Route::delete('/admin/info/{info}', 'InfoController@destroy')->name('info.destroy')->middleware('login_auth');
 
+Route::get('/admin/file/create','DocumentController@create')->name('file.create')->middleware('login_auth');
+Route::post('/admin/file','DocumentController@store')->name('file.store')->middleware('login_auth');
+Route::get('/admin/file','DocumentController@index')->name('file.index')->middleware('login_auth');
+Route::get('/admin/file/{document}/edit','DocumentController@edit')->name('file.edit')->middleware('login_auth');
+Route::patch('/admin/file/{document}','DocumentController@update')->name('file.update')->middleware('login_auth');
+Route::delete('/admin/file/{document}', 'DocumentController@destroy')->name('file.destroy')->middleware('login_auth');
+
 /*Ketua RT Route */
 Route::get('/ketua/warga/cari', 'KetuaController@search')->name('warga.search')->middleware('login_auth_ketua');
 Route::get('/ketua/tentang-kami', 'KetuaController@about')->name('pageketua.tentangkami')->middleware('login_auth_ketua');
@@ -79,6 +86,10 @@ Route::get('/warga/vaksinasi/create', 'VaksinasiController@create')->name('vaksi
 Route::post('/warga/vaksinasi', 'VaksinasiController@store')->name('vaksin.store')->middleware('login_auth_warga');
 Route::get('/warga/vaksinasi', 'VaksinasiController@index')->name('vaksin.index')->middleware('login_auth_warga');
 Route::get('/warga/vaksinasi/{vaksinasi}', 'VaksinasiController@show')->name('vaksin.show')->middleware('login_auth_warga');
+Route::get('/warga/vaksinasi/{vaksinasi}/edit', 'VaksinasiController@edit')->name('vaksin.edit')->middleware('login_auth_warga');
+Route::patch('/warga/vaksinasi/{vaksinasi}', 'VaksinasiController@update')->name('vaksin.update')->middleware('login_auth_warga');
+Route::delete('/warga/vaksinasi/{vaksinasi}', 'VaksinasiController@destroy')->name('vaksin.destroy')->middleware('login_auth_warga');
+
 Route::get('/warga/profil/{warga}', 'WargaController@profil')->name('pagewarga.profilwarga')->middleware('login_auth_warga');
 Route::get('/warga/profil/{warga}/edit','WargaController@editwarga')->name('pagewarga.editwarga')->middleware('login_auth_warga');
 Route::patch('/warga/profil/{warga}','WargaController@updatewarga')->name('pagewarga.updatewarga')->middleware('login_auth_warga');

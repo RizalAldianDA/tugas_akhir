@@ -34,7 +34,7 @@ class VaksinasiController extends Controller
                 $vaksin->vaksinasi_ke = $validateData['vaksinasi_ke'];
                 $vaksin->keluhan_vaksinasi = $validateData['keluhan_vaksinasi'];
                 $vaksin->save();
-                $request->session()->flash('pesan','Penambahan data berhasil');
+                $request->session()->flash('pesan','Penambahan data vaksinasi berhasil');
                 return redirect()->route('vaksin.index');
         }
         else{
@@ -63,6 +63,53 @@ class VaksinasiController extends Controller
             return redirect('/warga/beranda')->withInput()->with('pesan',"Tolong isi kata sandi sebelum melakukan pengisian data vaksinasi");
         }
        
+    }
+    public function edit($vaksinasi_id)
+    {
+        if(session('check')=='yes'){
+            $result = Vaksinasi::findOrFail($vaksinasi_id);
+            return view('vaksin.edit',['vaksinasi' => $result]);
+        }
+        else{
+            return redirect('/warga/beranda')->withInput()->with('pesan',"Tolong isi kata sandi sebelum melakukan pengisian data vaksinasi");
+        }
+        
+    }
+
+    public function update(Request $request, Vaksinasi $vaksinasi)
+    {
+        if(session('check')=='yes'){
+            $validateData = $request->validate([
+                'nik' => 'required',
+                'vaksin' => 'required',
+                'tanggal_vaksinasi' => 'required',
+                'vaksinasi_ke' => 'required',
+                'keluhan_vaksinasi' => '',
+                ]);
+                $vaksinasi->nik = $validateData['nik'];
+                $vaksinasi->vaksin = $validateData['vaksin'];
+                $vaksinasi->tanggal_vaksinasi = $validateData['tanggal_vaksinasi'];
+                $vaksinasi->vaksinasi_ke = $validateData['vaksinasi_ke'];
+                $vaksinasi->keluhan_vaksinasi = $validateData['keluhan_vaksinasi'];
+                $vaksinasi->save();
+                $request->session()->flash('pesan','Perubahan data vaksinasi berhasil');
+                return redirect()->route('vaksin.index');
+        }
+        else{
+            return redirect('/warga/beranda')->withInput()->with('pesan',"Tolong isi kata sandi sebelum melakukan pengisian data vaksinasi");
+        }
+       
+    }
+    public function destroy(Request $request, Vaksinasi $vaksinasi)
+    {
+        if(session('check')=='yes'){
+            $vaksinasi->delete();
+            $request->session()->flash('pesan','Pernghapusan data vaksinasi berhasil');
+            return redirect()->route('vaksin.index');
+        }
+        else{
+            return redirect('/warga/beranda')->withInput()->with('pesan',"Tolong isi kata sandi sebelum melakukan pengisian data vaksinasi");
+        }
     }
    
 }

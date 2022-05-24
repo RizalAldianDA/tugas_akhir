@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Ketua;
 use App\Warga;
 use App\Info;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class KetuaController extends Controller
 {
@@ -28,7 +30,10 @@ class KetuaController extends Controller
         $ketua->nik = $validateData['nik'];
         $ketua->nama = $validateData['nama'];
         $ketua->usernameket = $validateData['usernameket'];
-        $ketua->passwordket = $validateData['passwordket'];
+
+        $password = bcrypt($validateData['passwordket']);
+        $ketua->passwordket = $password;
+
         $ketua->rt = $validateData['rt'];
         $ketua->rw = $validateData['rw'];
         $ketua->nomorhp = $validateData['nomor'];
@@ -65,7 +70,10 @@ class KetuaController extends Controller
         $ketua->nik = $validateData['nik'];
         $ketua->nama = $validateData['nama'];
         $ketua->usernameket = $validateData['usernameket'];
-        $ketua->passwordket = $validateData['passwordket'];
+
+        $password = bcrypt($validateData['passwordket']);
+        $ketua->passwordket = $password;
+
         $ketua->rt = $validateData['rt'];
         $ketua->rw = $validateData['rw'];
         $ketua->nomorhp = $validateData['nomor'];
@@ -94,7 +102,7 @@ class KetuaController extends Controller
         ]);
         $result = Ketua::where('usernameket', '=', $validateData['usernameket'])->first();
         if($result){
-            if (($request->passwordket == $result->passwordket))
+            if (Hash::check($request->passwordket, $result->passwordket))
             {
                 session(['usernameket' => $request->usernameket,'rt' =>$result->rt,'rw' =>$result->rw,'nik' =>$result->nik]);
                 return redirect('/ketua/warga');
@@ -131,7 +139,10 @@ class KetuaController extends Controller
         'nomorhp' => '',
         ]);
         $ketua->usernameket = $validateData['usernameket'];
-        $ketua->passwordket = $validateData['passwordket'];
+        
+        $password = bcrypt($validateData['passwordket']);
+        $ketua->passwordket = $password;
+
         $ketua->rt = $validateData['rt'];
         $ketua->rw = $validateData['rw'];
         $ketua->nomorhp = $validateData['nomorhp'];

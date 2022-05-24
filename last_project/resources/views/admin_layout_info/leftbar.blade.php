@@ -37,6 +37,14 @@
             </span>
           </a>
         </li>
+        <li>
+          <a href="{{route('file.index')}}">
+            <i class="fa fa-file-excel-o"></i>
+            <span>Files</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
       </ul>
     </section>
   </aside>

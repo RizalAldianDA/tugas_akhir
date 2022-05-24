@@ -44,10 +44,17 @@
             }
 
             .main-text p {
+                white-space: pre-wrap;       /* Since CSS 2.1 */
+                white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+                white-space: -pre-wrap;      /* Opera 4-6 */
+                white-space: -o-pre-wrap;    /* Opera 7 */
+                word-wrap: break-word;       /* Internet Explorer 5.5+ */
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-                max-width: 100%;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                text-align: justify;
+                color: #23408e;
             }
         </style>
     </head>
@@ -60,10 +67,10 @@
                         <div class="py-4 d-flex justify-content-end align-items-center">
                             <h2 class="mr-auto">{{$info->title}}</h2>
                         </div>
-                        <span class="main-text"><p>{{$info->description}}</p></span>
+                        <pre class="main-text"><p>{{$info->description}}</p></pre>
                     </div>
                 @endif
-                <div class="row pure-u-1 pure-u-md-1-2 pure-u-lg-1-3 container">
+                <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3 container">
                     <div class="col-12">
                         <div class="py-4 d-flex justify-content-end align-items-center">
                             <h2 class="mr-auto">Masuk Sebagai Warga</h2>

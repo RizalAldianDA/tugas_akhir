@@ -246,16 +246,36 @@
                                 <th>Tanggal Vaksinasi</th>
                                 <th>Vaksinasi Ke-</th>
                                 <th>Keluhan Vaksinasi</th>
+                                <th colspan="3"><center>Aksi</center></th>
                                 </tr>
                             </thead>
                             <tbody>
                             @forelse ($vaksin as $vaksinasi)
                                 <tr>
-                                <th><a href="{{ route('vaksin.show',['vaksinasi' => $vaksinasi->id]) }}">{{$loop->iteration}}</a></th>
+                                <th>{{$loop->iteration}}</th>
                                 <td>{{$vaksinasi->vaksin}}</td>
                                 <td>{{$vaksinasi->tanggal_vaksinasi}}</td>
                                 <td>{{$vaksinasi->vaksinasi_ke}}</td>
                                 <td>{{$vaksinasi->keluhan_vaksinasi == '' ? 'N/A' : $vaksinasi->keluhan_vaksinasi}}</td>
+                                <td>
+                                    <center>
+                                        <a class="btn btn-primary" href="{{ route('vaksin.show',['vaksinasi' => $vaksinasi->id]) }}" alt="">Detail</a>
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <a href="{{ route('vaksin.edit',['vaksinasi' => $vaksinasi->id]) }}" class="btn btn-primary">Ubah</a>
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <form action="{{ route('vaksin.destroy',['vaksinasi' => $vaksinasi->id]) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                        <button type="submit" class="btn btn-danger ml-3">Hapus</button>
+                                        </form>
+                                    </center>
+                                </td>
                                 </tr>
                                 @empty
                                 <td colspan="5" class="text-center">Tidak ada data...</td>

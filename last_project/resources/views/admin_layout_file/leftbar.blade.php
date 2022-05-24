@@ -21,7 +21,7 @@
             </span>
           </a>
         </li>    
-        <li class="active">
+        <li>
           <a href="{{route('wargaall.indexall')}}">
             <i class="fa fa-files-o"></i>
             <span>Akun Warga</span>
@@ -37,7 +37,7 @@
             </span>
           </a>
         </li>
-        <li>
+        <li class="active">
           <a href="{{route('file.index')}}">
             <i class="fa fa-file-excel-o"></i>
             <span>Files</span>

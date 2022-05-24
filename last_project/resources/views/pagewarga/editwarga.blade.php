@@ -272,7 +272,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="passwordwarga">Password</label>
-                                <input type="text" class="form-control @error('passwordwarga') is-invalid @enderror" id="passwordwarga" name="passwordwarga" value="{{ old('passwordwarga') ?? '************' }}">
+                                <input type="text" class="form-control @error('passwordwarga') is-invalid @enderror" id="passwordwarga" name="passwordwarga" value="{{ old('passwordwarga') ?? $wargas->passwordwarga == '' ? '' : '*************' }}">
                                 @error('passwordwarga')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror

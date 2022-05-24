@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Warga;
 use App\Vaksinasi;
 use App\Info;
+use App\Document;
 
 use App\Imports\WargaImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -33,7 +34,9 @@ class WargaController extends Controller
     }
     public function createexcel()
     {
-        return view('warga.autocreate');
+        $document = Document::where('publisher_file','=','Admin')
+        ->first();
+        return view('warga.autocreate',['doc'=>$document]);
     }
     public function wargaimport(Request $request){
         Excel::import(new WargaImport, request()->file('file'));
