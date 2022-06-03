@@ -30,9 +30,7 @@
             .btn{
                 background-color:#23408e;
                 color:#ffffff;
-                margin-right: 1%;
-                margin-top: 1%;
-                margin-bottom: 1%;
+                padding: 5%;
             }
             .btn:hover{
                 color:#ffffff;
@@ -42,16 +40,26 @@
     </head>
     <body>
         <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="py-4 d-flex align-items-center">
-                            <a class="btn btn-info" role="button" href="{{route('loginwarga.index3')}}">Masuk Sebagai Warga</a></button>
+            <div class="pure-g">
+                <div class="container">
+                    <div class="row">
+                        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+                            <div class="col-12">
+                                <div class="py-4 align-items-center">
+                                    <center>
+                                    <a class="btn btn-info" role="button" href="{{route('loginwarga.index3')}}">Masuk Sebagai Warga</a></button>
+                                    </center>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="py-4 d-flex align-items-center">
-                            <a class="btn btn-info" role="button" href="{{route('loginketua.index2')}}">Masuk Sebagai Ketua RT</a></button>
+                        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+                            <div class="col-12">
+                                <div class="py-4 align-items-center">
+                                    <center>
+                                    <a class="btn btn-info" role="button" href="{{route('loginketua.index2')}}">Masuk Sebagai Ketua RT</a></button>
+                                    </center>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

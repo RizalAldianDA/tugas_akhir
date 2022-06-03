@@ -15,7 +15,6 @@
   
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
         <style>
             body{
                 background-color: #cccccc;
@@ -123,7 +122,10 @@
                 color: white !important;
             }
 
-            @media screen and (min-width: 100px)and (max-width: 700px)  {  
+            @media screen and (min-width: 100px)and (max-width: 1000px)  {  
+                .content{
+                    max-width: 100%;
+                }
                 .botnav-right{
                     float: none;
                 }
@@ -187,7 +189,15 @@
                     padding-top: 3%;
                     padding-bottom: 3%;
                 }
-                
+                .contain{
+                    width: 100%; 
+                    border-collapse: collapse; 
+                    font-size: 12px;
+                    overflow-x: auto;
+                }
+                .btn-aksi{
+                    width: 100%;
+                }
             }
         </style>
     </head>
@@ -195,7 +205,7 @@
         <div class="botnav">
             <div class="content">
                 <a href="" class="navbar-brand"></a>
-                <nav class="navbar-expand-lg navbar-light">
+                <nav class="navbar-expand-lg navbar-dark">
                     <div class="botnav-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="Down" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>

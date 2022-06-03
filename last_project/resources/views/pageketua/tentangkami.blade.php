@@ -140,7 +140,10 @@
                     text-align: justify;
                     color: #23408e;
             }
-            @media screen and (min-width: 100px)and (max-width: 700px)  {  
+            @media screen and (min-width: 100px)and (max-width: 1000px)  {  
+                .content{
+                    max-width: 100%;
+                }  
                 .botnav-right{
                     float: none;
                 }
@@ -204,7 +207,20 @@
                     padding-top: 3%;
                     padding-bottom: 3%;
                 }
-                
+                .main-text p {
+                    white-space: pre-wrap;       /* Since CSS 2.1 */
+                    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+                    white-space: -pre-wrap;      /* Opera 4-6 */
+                    white-space: -o-pre-wrap;    /* Opera 7 */
+                    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    text-align: justify;
+                    color: #23408e;
+                    font-size: 18px;
+                }
             }
         </style>   
     </head>
@@ -212,7 +228,7 @@
         <div class="botnav">
             <div class="content">
                 <a href="" class="navbar-brand"></a>
-                <nav class="navbar-expand-lg navbar-light">
+                <nav class="navbar-expand-lg navbar-dark">
                     <div class="botnav-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="Down" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>

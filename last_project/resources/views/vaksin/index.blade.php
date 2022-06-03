@@ -119,8 +119,15 @@
             .dropbtn-active{
                 color: white !important;
             }
+            .btn-aksi{
+                margin-bottom: 4px;
+                width: 100px;
+            }
 
-            @media screen and (min-width: 100px)and (max-width: 700px)  {  
+            @media screen and (min-width: 100px)and (max-width: 1000px)  {  
+                .content{
+                    max-width: 100%;
+                }
                 .botnav-right{
                     float: none;
                 }
@@ -184,7 +191,16 @@
                     padding-top: 3%;
                     padding-bottom: 3%;
                 }
-                
+                .contain{
+                    width: 100%; 
+                    border-collapse: collapse; 
+                    font-size: 12px;
+                    overflow-x: auto;
+                }
+                .btn-aksi{
+                    margin-bottom: 4px;
+                    font-size: 13px;
+                }
             }
         </style>
     </head>
@@ -238,50 +254,50 @@
                             {{ session()->get('pesan') }}
                         </div>
                         @endif
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                <th>#</th>
-                                <th>Nama Vaksin</th>
-                                <th>Tanggal Vaksinasi</th>
-                                <th>Vaksinasi Ke-</th>
-                                <th>Keluhan Vaksinasi</th>
-                                <th colspan="3"><center>Aksi</center></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @forelse ($vaksin as $vaksinasi)
-                                <tr>
-                                <th>{{$loop->iteration}}</th>
-                                <td>{{$vaksinasi->vaksin}}</td>
-                                <td>{{$vaksinasi->tanggal_vaksinasi}}</td>
-                                <td>{{$vaksinasi->vaksinasi_ke}}</td>
-                                <td>{{$vaksinasi->keluhan_vaksinasi == '' ? 'N/A' : $vaksinasi->keluhan_vaksinasi}}</td>
-                                <td>
-                                    <center>
-                                        <a class="btn btn-primary" href="{{ route('vaksin.show',['vaksinasi' => $vaksinasi->id]) }}" alt="">Detail</a>
-                                    </center>
-                                </td>
-                                <td>
-                                    <center>
-                                        <a href="{{ route('vaksin.edit',['vaksinasi' => $vaksinasi->id]) }}" class="btn btn-primary">Ubah</a>
-                                    </center>
-                                </td>
-                                <td>
-                                    <center>
-                                        <form action="{{ route('vaksin.destroy',['vaksinasi' => $vaksinasi->id]) }}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                        <button type="submit" class="btn btn-danger ml-3">Hapus</button>
-                                        </form>
-                                    </center>
-                                </td>
-                                </tr>
-                                @empty
-                                <td colspan="5" class="text-center">Tidak ada data...</td>
-                                @endforelse
-                            </tbody>
-                        </table>
+                        <div class="contain">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nama Vaksin</th>
+                                        <th>Tanggal Vaksinasi</th>
+                                        <th>Vaksinasi Ke-</th>
+                                        <th>Keluhan Vaksinasi</th>
+                                        <th><center>Aksi</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @forelse ($vaksin as $vaksinasi)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$vaksinasi->vaksin}}</td>
+                                        <td>{{$vaksinasi->tanggal_vaksinasi}}</td>
+                                        <td>{{$vaksinasi->vaksinasi_ke}}</td>
+                                        <td>{{$vaksinasi->keluhan_vaksinasi == '' ? 'N/A' : $vaksinasi->keluhan_vaksinasi}}</td>
+                                        <td>
+                                            <center>
+                                                <a role="button" class="btn btn-primary btn-aksi" href="{{ route('vaksin.show',['vaksinasi' => $vaksinasi->id]) }}" alt="">Detail</a>
+                                            </center>
+                                            <div></div>
+                                            <center>
+                                                <a role="button" class="btn btn-success btn-aksi" href="{{ route('vaksin.edit',['vaksinasi' => $vaksinasi->id]) }}" >Ubah</a>
+                                            </center>
+                                            <div></div>
+                                            <center>
+                                                <form action="{{ route('vaksin.destroy',['vaksinasi' => $vaksinasi->id]) }}" method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                <button type="submit" class="btn btn-danger btn-aksi">Hapus</button>
+                                                </form>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    @empty
+                                    <td colspan="5" class="text-center">Tidak ada data...</td>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

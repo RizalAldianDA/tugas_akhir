@@ -120,7 +120,10 @@
                 color: white !important;
             }
 
-            @media screen and (min-width: 100px)and (max-width: 700px)  {  
+            @media screen and (min-width: 100px)and (max-width: 1000px)  {  
+                .content{
+                    max-width: 100%;
+                }
                 .botnav-right{
                     float: none;
                 }
@@ -184,15 +187,23 @@
                     padding-top: 3%;
                     padding-bottom: 3%;
                 }
-                
+                .contain{
+                    width: 100%; 
+                    border-collapse: collapse; 
+                    font-size: 12px;
+                    overflow-x: auto;
+                }
+                .btn-aksi{
+                    width: 100%;
+                }
             }
-        </style>        
+        </style>       
     </head>
     <body>
         <div class="botnav">
             <div class="content">
                 <a href="" class="navbar-brand"></a>
-                <nav class="navbar-expand-lg navbar-light">
+                <nav class="navbar-expand-lg navbar-dark">
                     <div class="botnav-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="Down" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -226,7 +237,7 @@
             </div>
         </div>
         <div class="content">
-            <div class="container mt-3">
+            <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="py-4 d-flex align-items-center">

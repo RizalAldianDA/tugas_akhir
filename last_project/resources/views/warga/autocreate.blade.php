@@ -141,7 +141,10 @@
                     color: #23408e;
             }
 
-            @media screen and (min-width: 100px)and (max-width: 700px)  {  
+            @media screen and (min-width: 100px)and (max-width: 1000px)  {  
+                .content{
+                    max-width: 100%;
+                }  
                 .botnav-right{
                     float: none;
                 }
@@ -213,7 +216,7 @@
         <div class="botnav">
             <div class="content">
                 <a href="" class="navbar-brand"></a>
-                <nav class="navbar-expand-lg navbar-light">
+                <nav class="navbar-expand-lg navbar-dark">
                     <div class="botnav-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="Down" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>

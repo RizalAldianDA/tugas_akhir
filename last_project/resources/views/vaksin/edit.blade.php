@@ -121,7 +121,10 @@
                 color: white !important;
             }
 
-            @media screen and (min-width: 100px)and (max-width: 700px)  {  
+            @media screen and (min-width: 100px)and (max-width: 1000px)  {  
+                .content{
+                    max-width: 100%;
+                }
                 .botnav-right{
                     float: none;
                 }

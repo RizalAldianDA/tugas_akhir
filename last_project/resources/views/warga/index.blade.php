@@ -123,7 +123,10 @@
                 color: white !important;
             }
 
-            @media screen and (min-width: 100px)and (max-width: 700px)  {  
+            @media screen and (min-width: 100px)and (max-width: 1000px)  {  
+                .content{
+                    max-width: 100%;
+                }
                 .botnav-right{
                     float: none;
                 }
@@ -187,7 +190,15 @@
                     padding-top: 3%;
                     padding-bottom: 3%;
                 }
-                
+                .contain{
+                    width: 100%; 
+                    border-collapse: collapse; 
+                    font-size: 12px;
+                    overflow-x: auto;
+                }
+                .btn-aksi{
+                    width: 100%;
+                }
             }
         </style>
     </head>
@@ -195,7 +206,7 @@
         <div class="botnav">
             <div class="content">
                 <a href="" class="navbar-brand"></a>
-                <nav class="navbar-expand-lg navbar-light">
+                <nav class="navbar-expand-lg navbar-dark">
                     <div class="botnav-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="Down" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -227,66 +238,68 @@
             </div>
         </div>
         <div class="content">
-            <div class="container mt-3">
+            <div class="container">
                 <div class="row">
                     <div class="col-12">
-                    <div class="py-4 d-flex justify-content-end align-items-center">
-                        <h2 class="mr-auto">Daftar Warga</h2>
-                        <form class="form-inline my-2 my-lg-0" action="{{route('warga.search')}}" method="GET">
-                            <select class="form-control" name="tipe" id="tipe">
-                                <option value="nik"> NIK
-                                </option>
-                                <option value="nokk"> NO KK
-                                </option>
-                                <option value="nama"> NAMA
-                                </option>
-                            </select>
-                            <input id="name" class="form-control mr-sm-2" type="text" name="cari" placeholder="Cari" aria-label="Search" value="{{old('cari')}}">
-                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="cari"><i class="fa fa-search"></i></button>
-                        </form>
+                        <div class="py-4 d-flex justify-content-end align-items-center">
+                            <h2 class="mr-auto">Daftar Warga</h2>
+                            <form class="form-inline my-2 my-lg-0" action="{{route('warga.search')}}" method="GET">
+                                <select class="form-control" name="tipe" id="tipe">
+                                    <option value="nik"> NIK
+                                    </option>
+                                    <option value="nokk"> NO KK
+                                    </option>
+                                    <option value="nama"> NAMA
+                                    </option>
+                                </select>
+                                <input id="name" class="form-control mr-sm-2" type="text" name="cari" placeholder="Cari" aria-label="Search" value="{{old('cari')}}">
+                                <button class="btn btn-outline-primary my-2 my-sm-0 btn-aksi" type="submit" value="cari"><i class="fa fa-search"></i></button>
+                            </form>
 
-                    </div>
-                    @if(session()->has('pesan'))
-                        <div class="alert alert-success">
-                            {{ session()->get('pesan') }}
                         </div>
-                    @endif
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>NIK</th>
-                            <th>No KK</th>
-                            <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Tanggal Lahir</th>
-                            <th>RT</th>
-                            <th>RW</th>
-                            <th>Nomor HP</th>
-                            <th>Alamat</th>
-                            <th>Status Covid 19</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($wargas as $akun)
-                            <tr>
-                                <th>{{$loop->iteration}}</th>
-                                <td><a href="{{ route('warga.showwarga',['profil' => $akun->nik]) }}">{{$akun->nik}}</a></td>
-                                <td>{{$akun->nokk}}</td>
-                                <td>{{$akun->nama}}</td>
-                                <td>{{$akun->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</td>
-                                <td>{{date('d F Y', strtotime($akun->tanggal_lahir))}}</td>
-                                <td>{{$akun->rt}}</td>
-                                <td>{{$akun->rw}}</td>
-                                <td>{{$akun->nomorhp == '' ? 'N/A' : $akun->nomorhp}}</td>
-                                <td>{{$akun->alamat == '' ? 'N/A' : $akun->alamat}}</td>
-                                <td>{{$akun->status == '' ? 'N/A' : $akun->status}}</td>
-                            </tr>
-                            @empty
-                                <td colspan="10" class="text-center">Tidak ada data...</td>
-                            @endforelse
-                        </tbody>
-                    </table>
+                        @if(session()->has('pesan'))
+                            <div class="alert alert-success">
+                                {{ session()->get('pesan') }}
+                            </div>
+                        @endif
+                        <div class="contain">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>NIK</th>
+                                    <th>No KK</th>
+                                    <th>Nama</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>RT</th>
+                                    <th>RW</th>
+                                    <th>Nomor HP</th>
+                                    <th>Alamat</th>
+                                    <th>Status Covid 19</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($wargas as $akun)
+                                    <tr>
+                                        <th>{{$loop->iteration}}</th>
+                                        <td><a href="{{ route('warga.showwarga',['profil' => $akun->nik]) }}">{{$akun->nik}}</a></td>
+                                        <td>{{$akun->nokk}}</td>
+                                        <td>{{$akun->nama}}</td>
+                                        <td>{{$akun->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</td>
+                                        <td>{{date('d F Y', strtotime($akun->tanggal_lahir))}}</td>
+                                        <td>{{$akun->rt}}</td>
+                                        <td>{{$akun->rw}}</td>
+                                        <td>{{$akun->nomorhp == '' ? 'N/A' : $akun->nomorhp}}</td>
+                                        <td>{{$akun->alamat == '' ? 'N/A' : $akun->alamat}}</td>
+                                        <td>{{$akun->status == '' ? 'N/A' : $akun->status}}</td>
+                                    </tr>
+                                    @empty
+                                        <td colspan="10" class="text-center">Tidak ada data...</td>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

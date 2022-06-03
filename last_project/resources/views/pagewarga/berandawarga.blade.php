@@ -118,7 +118,28 @@
                 color: white !important;
             }
 
-            @media screen and (min-width: 100px)and (max-width: 700px)  {  
+            .main-text {
+                    text-align: justify;
+                    max-width: 100%;
+                }
+
+            .main-text p {
+                    white-space: pre-wrap;       /* Since CSS 2.1 */
+                    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+                    white-space: -pre-wrap;      /* Opera 4-6 */
+                    white-space: -o-pre-wrap;    /* Opera 7 */
+                    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    text-align: justify;
+                    color: #23408e;
+            }
+            @media screen and (min-width: 100px)and (max-width: 1000px)  {  
+                .content{
+                    max-width: 100%;
+                }
                 .botnav-right{
                     float: none;
                 }
@@ -182,7 +203,20 @@
                     padding-top: 3%;
                     padding-bottom: 3%;
                 }
-                
+                .main-text p {
+                    white-space: pre-wrap;       /* Since CSS 2.1 */
+                    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+                    white-space: -pre-wrap;      /* Opera 4-6 */
+                    white-space: -o-pre-wrap;    /* Opera 7 */
+                    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    text-align: justify;
+                    color: #23408e;
+                    font-size: 18px;
+                }
             }
         </style>
     </head>
@@ -199,8 +233,7 @@
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
                                     <a class="active" style="background-color: #cccccc" href="{{route('pagewarga.berandawarga')}}">BERANDA</a>
-                                </li>
-                                
+                                </li>            
                                 @if((session('check')=='yes'))
                                     <li class="nav-item">
                                         <a href="{{route('vaksin.index')}}">VAKSINASI</a>
@@ -242,7 +275,7 @@
                         @else
                             {{$info->title}}
                             <div></div>
-                            {{$info->description}}
+                            <pre class='main-text'><p>{{$info->description}}</p></pre>
                         @endif
                     </div>
                 </div>
