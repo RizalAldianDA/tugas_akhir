@@ -68,6 +68,20 @@
                 float: right;
                 height: 35px;
             }
+            .btn-aksi{
+                background-color:#23408e;
+                color:#ffffff;
+                padding: 5%;
+                height: 0% !important;
+            }
+            .btn-aksi:hover{
+                color:#ffffff;
+                background-color: #ba0d14;
+            }
+            .text-button{
+               padding-left: 1%;
+               font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
             /*Dropdown Menu Navigation Bar*/
             .dropdown {
                 float: left;
@@ -237,16 +251,28 @@
             </div>
         </div>
         <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="py-4 d-flex align-items-center">
-                            <a class="btn btn-info" role="button" href="{{ route('warga.create') }}">Manual</a></button>
+            <div class="pure-g">
+                <div class="container">
+                    <div class="row">
+                        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+                            <div class="col-12">
+                                <div class="py-4 d-flex align-items-center">
+                                    <a class="btn btn-info btn-aksi" role="button" href="{{ route('warga.create') }}">Manual</a></button>
+                                    <div class="text-button">
+                                        Manual digunakan untuk memasukan data warga satu persatu
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="py-4 d-flex align-items-center">
-                            <a class="btn btn-info" role="button" href="{{ route('warga.createexcel') }}">Excel</a></button>
+                        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+                            <div class="col-12">
+                                <div class="py-4 d-flex align-items-center">
+                                    <a class="btn btn-info btn-aksi" role="button" href="{{ route('warga.createexcel') }}">Excel</a></button>
+                                    <div class="text-button">
+                                        Excel diguakan untuk memasukan data warga melalui file Excel
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

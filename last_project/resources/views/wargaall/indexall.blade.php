@@ -81,6 +81,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                         {{ $wargas->links() }} 
                     </section> 
             <!-- /.content -->
         </div>

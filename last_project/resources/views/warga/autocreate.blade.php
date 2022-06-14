@@ -71,6 +71,9 @@
                 margin-bottom: 1%;
                 margin-top: 1%;
             }
+            .btn-aksi{
+                float:left;
+            }
             /*Dropdown Menu Navigation Bar*/
             .dropdown {
                 float: left;
@@ -254,17 +257,17 @@
                 <div class="pure-u-1 pure-u-md-1-1 pure-u-lg-1-1 container">
                     @if($doc == null)
                     @else
+                    <br>
                         {{$doc->file_name}}
-                        <a class="btn btn-primary" href="{{ url('') }}/{{$doc->file}}">Download</a>
-                        <br><br>
                         <pre class='main-text'><p>{{$doc->description}}</p></pre>
+                        <a class="btn btn-primary btn-aksi" href="{{ url('') }}/{{$doc->file}}">Download</a>
                     @endif
                 </div>
                 <div class="pure-u-1 pure-u-md-1-1 pure-u-lg-1-1 container">
                     <div class="row">
                         <div class="col-12">
                             <div class="py-4 d-flex justify-content-end align-items-center">
-                                <h2 class="mr-auto">Tabel Warga</h2>
+                                <h2 class="mr-auto">Unggah Warga</h2>
                             </div>
                             @if(session()->has('pesan'))
                             <div class="alert alert-success">
@@ -278,7 +281,7 @@
                                         <input type="file" name="file" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Simpan</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn btn-secondary">Tutup</button>
                                 </form>
                             </div>
                         </div>

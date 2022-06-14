@@ -69,12 +69,12 @@ class WargaController extends Controller
     {
         $warga = Warga::where('rt','=',session('rt'))
         ->where('rw','=',session('rw'))
-        ->get();
+        ->paginate(15);
         return view('warga.index',['wargas' => $warga]);
     }
     public function indexall()
     {
-        $warga = Warga::all();
+        $warga = Warga::paginate(20);
         return view('wargaall.indexall',['wargas' => $warga]);
     }
     public function detailall($warga_nik){
@@ -87,7 +87,7 @@ class WargaController extends Controller
 		$cari = $request->cari;
  
 		$word = Warga::where($tipe,'LIKE',"%".$cari."%")
-        ->paginate(3);
+        ->get();
 		return view('wargaall.searchall',['cari' => $word,'word'=>$cari,'tipe'=>$tipe]);
 	}
     public function editall($warga_id){

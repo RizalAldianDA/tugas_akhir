@@ -299,6 +299,7 @@
                                     @endforelse
                                 </tbody>
                             </table>
+                            {{ $wargas->links() }} 
                         </div>
                     </div>
                 </div>
