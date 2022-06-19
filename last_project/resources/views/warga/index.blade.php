@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link href="{{ url('') }}/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ url('') }}/last_project/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <title>Akun Warga</title>
         <!--Link-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -15,6 +15,7 @@
   
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="{{ url('') }}/assets/js/chartjs/Chart.js"></script>
 
         <style>
             body{
@@ -26,9 +27,21 @@
             .content {
                 max-width: 80%; 
                 margin: 0 auto !important; 
-                float: none !important;  
+                float: none !important; 
+                margin-left: auto;
+		        margin-right: auto; 
                 color: #23408e;      
             }
+            .ket{
+                max-width: 80% !important;
+                margin: 0 auto !important;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                width: 100%;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            
              /*___________Bot Navigation_____________*/
             .botnav {
                 background-color: #23408e;
@@ -123,7 +136,7 @@
                 color: white !important;
             }
 
-            @media screen and (min-width: 100px)and (max-width: 1000px)  {  
+            @media screen and (min-width: 100px)and (max-width: 1000px)  and (min-height: 100px)and (max-height: 1200px) {  
                 .content{
                     max-width: 100%;
                 }
@@ -199,6 +212,9 @@
                 .btn-aksi{
                     width: 100%;
                 }
+                .ket{
+                    font-size: 13px;
+                }
             }
         </style>
     </head>
@@ -262,7 +278,35 @@
                                 {{ session()->get('pesan') }}
                             </div>
                         @endif
+                        <div class="content">
+                            <div style="width: 90%;margin: 0 auto">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
+                        <input type="hidden" id="result1" value="{{ $result1 ->count()}}">
+                        <input type="hidden" id="result2" value="{{ $result2 ->count()}}">
+                        <input type="hidden" id="result3" value="{{ $result3 ->count()}}">
+                        <input type="hidden" id="result4" value="{{ $result4 ->count()}}">
+                        <div class="ket">
+                            KETERANGAN
+                            <div class="pure-g">
+                                <div class="container">
+                                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+                                        TTC = Tidak Terpapar Covid
+                                        <br>
+                                        STC = Sedang Terpapar Covid
+                                    </div>
+                                    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+                                        PTC = Pernah Terpapar Covid
+                                        <br>
+                                        BM = Belum Mengisi
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="contain">
+                            <br>
+                            <br>
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -306,8 +350,57 @@
             </div>
         </div>
         <!--Jquery-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script>
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var result1 = document.getElementById("result1").value;
+            var result2 = document.getElementById("result2").value;
+            var result3 = document.getElementById("result3").value;
+            var result4 = document.getElementById("result4").value;
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ["TTC","STC","PTC","BM"],
+                    datasets: [{
+                        label: '',
+                        data: [
+                            
+                                result1
+                            ,
+                                result2
+                            ,
+                                result3
+                            ,
+                                result4
+                             
+                        ],
+                        backgroundColor: [
+                        'rgba(0, 255, 0, 0.8)',
+                        'rgba(255, 0, 0, 0.8)',
+                        'rgba(0, 0, 255, 0.8)',
+                        'rgba(122, 122, 122, 0.8)'
+                        ],
+                        borderColor: [
+                        'rgba(0, 255, 0, 0.8)',
+                        'rgba(255, 0, 0, 0.8)',
+                        'rgba(0, 0, 255, 0.8)',
+                        'rgba(122, 122, 122, 0.8)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 </html>

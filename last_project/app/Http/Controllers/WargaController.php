@@ -70,12 +70,33 @@ class WargaController extends Controller
         $warga = Warga::where('rt','=',session('rt'))
         ->where('rw','=',session('rw'))
         ->paginate(15);
-        return view('warga.index',['wargas' => $warga]);
+        $result1 = Warga::where('rt','=',session('rt'))
+        ->where('rw','=',session('rw'))
+        ->where('status','=','Tidak Terpapar Covid')
+        ->get();
+        $result2 = Warga::where('rt','=',session('rt'))
+        ->where('rw','=',session('rw'))
+        ->where('status','=','Sedang Terpapar Covid')
+        ->get();
+        $result3 = Warga::where('rt','=',session('rt'))
+        ->where('rw','=',session('rw'))
+        ->where('status','=','Pernah Terpapar Covid')
+        ->get();
+        $result4 = Warga::where('rt','=',session('rt'))
+        ->where('rw','=',session('rw'))
+        ->where('status','=',null)
+        ->get();
+
+        return view('warga.index',['wargas' => $warga,'result1'=> $result1,'result2'=> $result2,'result3'=> $result3,'result4'=> $result4]);
     }
     public function indexall()
     {
         $warga = Warga::paginate(20);
-        return view('wargaall.indexall',['wargas' => $warga]);
+        $result1 = Warga::whereNotNULL('status')
+        ->get();
+        $result2 = Warga::whereNull('status')
+        ->get();
+        return view('wargaall.indexall',['wargas' => $warga,'result1'=> $result1,'result2'=> $result2]);
     }
     public function detailall($warga_nik){
         $warga = Warga::where('nik','=',$warga_nik)->first();    

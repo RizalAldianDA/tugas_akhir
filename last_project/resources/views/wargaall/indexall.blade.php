@@ -5,6 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Akun Warga</title>
+        <script type="text/javascript" src="{{ url('') }}/assets/js/chartjs/Chart.js"></script>
+        <style>
+            .graph{
+                height: 100%;
+            }
+        </style>
     </head>
     <body>
         @extends('admin_layout_warga.app')
@@ -45,6 +51,14 @@
                     </section>
                     <!-- Main content -->
                     <section class="content">
+                        <div class="graph">
+                            <div style="width: 50%;margin: 0 auto">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
+                        <input type="hidden" id="result1" value="{{ $result1 ->count()}}">
+                        <input type="hidden" id="result2" value="{{ $result2 ->count()}}">
+                        <br>
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -85,6 +99,45 @@
                     </section> 
             <!-- /.content -->
         </div>
+        <script>
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var result1 = document.getElementById("result1").value;
+            var result2 = document.getElementById("result2").value;
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ["Sudah Mengisi","Belum Mengisi"],
+                    datasets: [{
+                        label: '',
+                        data: [
+                            
+                                result1
+                            ,
+                                result2
+                             
+                        ],
+                        backgroundColor: [
+                        'rgba(0, 255, 0, 0.8)',
+                        'rgba(255, 0, 0, 0.8)'
+                        ],
+                        borderColor: [
+                        'rgba(0, 255, 0, 0.8)',
+                        'rgba(255, 0, 0, 0.8)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
         @endsection
     </body>
 </html>

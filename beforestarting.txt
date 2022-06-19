@@ -1,0 +1,1 @@
+1. import websistem_covid19 to phpmyadmin
