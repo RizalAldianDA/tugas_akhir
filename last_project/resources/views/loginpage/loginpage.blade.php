@@ -18,7 +18,7 @@
                 background-color:#23408e;
             }
             .content {
-                max-width: 80%; 
+                max-width: 50%; 
                 margin: 0 auto !important; 
                 float: none !important;  
                 color:#23408e;
@@ -31,10 +31,20 @@
                 background-color:#23408e;
                 color:#ffffff;
                 padding: 5%;
+                width: 90%;
             }
             .btn:hover{
                 color:#ffffff;
                 background-color: #ba0d14;
+            }
+            @media screen and (min-width: 100px)and (max-width: 1000px)  {
+                .content {
+                    max-width: 80%; 
+                    margin: 0 auto !important; 
+                    float: none !important;  
+                    color:#23408e;
+                    padding-top: 50%;      
+                }
             }
         </style>
     </head>
@@ -43,7 +53,7 @@
             <div class="pure-g">
                 <div class="container">
                     <div class="row">
-                        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+                        <div class="pure-u-1 pure-u-md-1-1 pure-u-lg-1-1">
                             <div class="col-12">
                                 <div class="py-4 align-items-center">
                                     <center>
@@ -52,7 +62,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+                        <div class="pure-u-1 pure-u-md-1-1 pure-u-lg-1-1">
                             <div class="col-12">
                                 <div class="py-4 align-items-center">
                                     <center>
