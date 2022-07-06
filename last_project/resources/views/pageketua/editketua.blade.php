@@ -191,7 +191,6 @@
     <body>
         <div class="botnav">
             <div class="content">
-                <a href="" class="navbar-brand"></a>
                 <nav class="navbar-expand-lg navbar-dark">
                     <div class="botnav-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="Down" aria-label="Toggle navigation">
@@ -266,7 +265,7 @@
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>   
-                            <button type="submit" class="btn btn-primary mb-2">UBAH</button>
+                            <button type="submit" class="btn btn-primary mb-2">SIMPAN</button>
                         </form>
                         </div>
                     </div>

@@ -44,12 +44,12 @@
                 <li>Nomor HP: {{$wargas->nomorhp == '' ? 'N/A' : $wargas->nomorhp}}</li>
                 <li>Alamat: {{$wargas->alamat == '' ? 'N/A' : $wargas->alamat}}</li>
                 <li>Status Covid-19: {{$wargas->status == '' ? 'N/A' : $wargas->status}}</li>
-            </ul>
-            <a href="{{ route('wargaall.editall',['warga' => $wargas->id]) }}"class="btn btn-primary">UBAH</a>
+            </ul> 
             <form action="{{ route('warga.destroy',['warga'=>$wargas->id]) }}" method="POST">
                 @method('DELETE')
                 @csrf
                 <button type="submit" class="btn btn-danger ml-3">Hapus</button>
+                <a href="{{ route('wargaall.editall',['warga' => $wargas->id]) }}"class="btn btn-primary">UBAH</a>
             </form>
         </section> 
         <!-- /.content -->

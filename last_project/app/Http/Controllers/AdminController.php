@@ -18,7 +18,8 @@ class AdminController extends Controller
         ]);
         $result = Admin::where('usernameadmin', '=', $validateData['usernameadmin'])->first();
         if($result){
-            if (($request->passwordadmin == $result->passwordadmin))
+            $decryptbaru = md5($request->passwordadmin);
+            if (($decryptbaru == $result->passwordadmin))
             {
                 session(['usernameadmin' => $request->usernameadmin]);
                 return redirect('/admin/ketua');

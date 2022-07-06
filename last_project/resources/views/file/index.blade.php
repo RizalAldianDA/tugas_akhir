@@ -83,7 +83,7 @@
                                     <form action="{{ route('file.destroy',['document' => $data->id]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                    <button type="submit" class="btn btn-danger ml-3">Hapus</button>
+                                    <button type="submit" class="btn btn-danger ml-3">Delete</button>
                                     </form>
                                 </center>
                             </td>

@@ -218,7 +218,6 @@
     <body>
         <div class="botnav">
             <div class="content">
-                <a href="" class="navbar-brand"></a>
                 <nav class="navbar-expand-lg navbar-dark">
                     <div class="botnav-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="Down" aria-label="Toggle navigation">
@@ -281,7 +280,7 @@
                                         <input type="file" name="file" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Simpan</button>
-                                    <button type="button" class="btn btn-secondary">Tutup</button>
+                                    <a href="{{route('warga.addwarga')}}"><button type="button" class="btn btn-secondary">Kembali</button></a>
                                 </form>
                             </div>
                         </div>

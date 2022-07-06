@@ -24,11 +24,11 @@
             <section class="content-header">
                     <div class="pt-3 d-flex justify-content-end align-items-center">
                         <h1 class="h2 mr-auto">Profil {{$ketua->nama}}</h1>
-                        <a href="{{ route('ketua.edit',['ketua' => $ketua->id]) }}" class="btn btn-primary">Edit</a>
                         <form action="{{ route('ketua.destroy',['ketua'=>$ketua->id]) }}" method="POST">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" class="btn btn-danger ml-3">Hapus</button>
+                        <button type="submit" class="btn btn-danger ml-3">Delete</button>
+                        <a href="{{ route('ketua.edit',['ketua' => $ketua->id]) }}" class="btn btn-primary">Edit</a>
                         </form>
                     </div>
                     @if(session()->has('pesan'))
