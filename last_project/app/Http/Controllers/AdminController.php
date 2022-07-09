@@ -33,7 +33,7 @@ class AdminController extends Controller
         }
     }
     public function logout(){
-        session()->forget('usernameadmin');
+        session()->flush();
         return redirect('/admin/login')->with('pesan','Logout berhasil');
     }
 }

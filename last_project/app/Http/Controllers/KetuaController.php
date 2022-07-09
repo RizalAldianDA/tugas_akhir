@@ -116,7 +116,7 @@ class KetuaController extends Controller
         }
     }
     public function logout(){
-        session()->forget('usernameket');
+        session()->flush();
         return redirect('/ketua/login')->with('pesan','Logout berhasil');
     }
     

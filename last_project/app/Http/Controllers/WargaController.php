@@ -203,7 +203,7 @@ class WargaController extends Controller
         }
     }
     public function logout(){
-        session()->forget('nik');
+        session()->flush();
         return redirect('/warga/login')->with('pesan','Logout berhasil');
     }
 
