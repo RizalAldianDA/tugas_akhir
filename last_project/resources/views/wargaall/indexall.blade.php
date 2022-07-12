@@ -91,7 +91,7 @@
                                     <td>{{$akun->status == '' ? 'N/A' : $akun->status}}</td>
                                 </tr>
                                 @empty
-                                    <td colspan="10" class="text-center">Tidak ada data...</td>
+                                    <td colspan="11" class="text-center">Tidak ada data...</td>
                                 @endforelse
                             </tbody>
                         </table>

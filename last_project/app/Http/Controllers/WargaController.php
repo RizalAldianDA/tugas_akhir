@@ -38,10 +38,14 @@ class WargaController extends Controller
         ->first();
         return view('warga.autocreate',['doc'=>$document]);
     }
-    public function wargaimport(Request $request){
-        Excel::import(new WargaImport, request()->file('file'));
+
+    public function wargaimport(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new WargaImport, $file);
         return redirect('/ketua/warga');
     }
+    
     public function store(Request $request)
     {
         $validateData = $request->validate([

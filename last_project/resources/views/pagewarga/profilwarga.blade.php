@@ -18,8 +18,8 @@
             body{
                 background-color: #cccccc;
             }
-            .row{
-                
+            .row li{
+                list-style: none;
             }
             .content {
                 max-width: 80%; 
@@ -243,16 +243,17 @@
                         </div>
                         @endif
                         <ul>
-                            <li>NIK: {{$wargas->nik}} </li>
-                            <li>NO KK: {{$wargas->nokk}}</li>
-                            <li>Jenis Kelamin: {{$wargas->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</li>
-                            <li>Tanggal Lahir: {{date('d F Y', strtotime($wargas->tanggal_lahir))}}</li>
+                            <li>NIK : {{$wargas->nik}} </li>
+                            <li>NO KK : {{$wargas->nokk}}</li>
+                            <br>
+                            <li>Jenis Kelamin : {{$wargas->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</li>
+                            <li>Tanggal Lahir : {{date('d F Y', strtotime($wargas->tanggal_lahir))}}</li>
                             <li>RT : {{$wargas->rt}}</li>
                             <li>RW : {{$wargas->rw}}</li>
                             <li>Password : {{$wargas->passwordwarga == '' ? 'N/A' : '************'}}</li>
-                            <li>Nomor HP: {{$wargas->nomorhp == '' ? 'N/A' : $wargas->nomorhp}}</li>
-                            <li>Alamat: {{$wargas->alamat == '' ? 'N/A' : $wargas->alamat}}</li>
-                            <li>Status Covid-19: {{$wargas->status == '' ? 'N/A' : $wargas->status}}</li>
+                            <li>Nomor HP : {{$wargas->nomorhp == '' ? 'N/A' : $wargas->nomorhp}}</li>
+                            <li>Alamat : {{$wargas->alamat == '' ? 'N/A' : $wargas->alamat}}</li>
+                            <li>Status Covid-19 : {{$wargas->status == '' ? 'N/A' : $wargas->status}}</li>
                         </ul>
                         <a href="{{ route('pagewarga.editwarga',['warga' => $wargas->id]) }}"class="btn btn-primary">UBAH</a>
                     </div>

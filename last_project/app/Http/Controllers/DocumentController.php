@@ -25,7 +25,7 @@ class DocumentController extends Controller
         if($request->hasFile('file'))
         {
             $extFile = $request->file->getClientOriginalExtension();
-            $namaFile = 'file-'.time().".".$extFile;
+            $namaFile = 'Import-File'.".".$extFile;
             $path = $request->file->move('assets/files',$namaFile);
             $document->file = $path;
         }
@@ -57,7 +57,7 @@ class DocumentController extends Controller
         if($request->hasFile('file'))
         {
             $extFile = $request->file->getClientOriginalExtension();
-            $namaFile = 'file-'.time().".".$extFile;
+            $namaFile = 'Import-File'.".".$extFile;
             File::delete($document->file);
             $path = $request->file->move('assets/files',$namaFile);
             $document->file = $path;

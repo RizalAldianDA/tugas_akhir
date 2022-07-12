@@ -4,18 +4,12 @@ namespace App\Imports;
 
 use App\Warga;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithBatchInserts;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Imports\HeadingRowFormatter;
+use Maatwebsite\Excel\Concerns\WithStartRow;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class WargaImport implements ToModel, WithHeadingRow
+class WargaImport implements ToModel, WithHeadingRow, WithChunkReading
 {
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
     public function model(array $row)
     {
         $row['tanggal_lahir'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_lahir'])->format('Y-m-d');  
@@ -28,5 +22,9 @@ class WargaImport implements ToModel, WithHeadingRow
             'rt' => session()->get('rt'),
             'rw' => session()->get('rw'),
         ]);
+    }
+    public function chunkSize(): int
+    {
+        return 1000;
     }
 }

@@ -74,7 +74,9 @@ Route::get('/ketua/warga/{profil}','WargaController@showwarga')->name('warga.sho
 Route::get('/ketua/warga/tambah-warga/manual-warga', 'WargaController@create')->name('warga.create')->middleware('login_auth_ketua');
 Route::post('/ketua/warga', 'WargaController@store')->name('warga.store')->middleware('login_auth_ketua');
 Route::get('/ketua/warga/tambah-warga/import-warga', 'WargaController@createexcel')->name('warga.createexcel')->middleware('login_auth_ketua');
+
 Route::post('/ketua/warga/tambah-warga/import-warga','WargaController@wargaimport')->name('warga.autocreate')->middleware('login_auth_ketua');
+
 Route::get('/ketua/profil/{ketua}', 'KetuaController@profil')->name('pageketua.profilketua')->middleware('login_auth_ketua');
 Route::get('/ketua/profil/{ketua}/edit','KetuaController@editketua')->name('pageketua.editketua')->middleware('login_auth_ketua');
 Route::patch('/ketua/profil/{ketua}','KetuaController@updateketua')->name('pageketua.updateketua')->middleware('login_auth_ketua');

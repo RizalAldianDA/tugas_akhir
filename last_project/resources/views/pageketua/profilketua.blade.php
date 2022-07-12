@@ -18,6 +18,9 @@
             body{
                 background-color: #cccccc;
             }
+            .row li{
+                list-style: none;
+            }
             .content {
                 max-width: 80%; 
                 margin: 0 auto !important; 
@@ -237,12 +240,13 @@
                         </div>
                         @endif
                         <ul>
-                            <li>NIK: {{$ketuas->nik}}</li>
+                            <li>NIK : {{$ketuas->nik}}</li>
+                            <br>
                             <li>RT : {{$ketuas->rt}}</li>
                             <li>RW : {{$ketuas->rw}}</li>
                             <li>Username : {{$ketuas->usernameket}}</li>
                             <li>Password : {{$ketuas->passwordket == '' ? 'N/A' : '*************'}}</li>
-                            <li>Nomor HP: {{$ketuas->nomorhp == '' ? 'N/A' : $ketuas->nomorhp}}</li>
+                            <li>Nomor HP : {{$ketuas->nomorhp == '' ? 'N/A' : $ketuas->nomorhp}}</li>
                         </ul>
                         <a href="{{ route('pageketua.editketua',['ketua' => $ketuas->id]) }}" class="btn btn-primary">UBAH</a>
                     </div>

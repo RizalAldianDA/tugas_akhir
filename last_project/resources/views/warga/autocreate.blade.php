@@ -280,8 +280,8 @@
                                         <input type="file" name="file" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Simpan</button>
-                                    <a href="{{route('warga.addwarga')}}"><button type="button" class="btn btn-secondary">Kembali</button></a>
                                 </form>
+                                <a href="{{route('warga.addwarga')}}"><button type="button" class="btn btn-secondary">Kembali</button></a>
                             </div>
                         </div>
                     </div>
