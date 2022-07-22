@@ -4,6 +4,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <style>
+            .button {
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 6px;
+                font-size: 20px;
+                text-align: center;
+                cursor: pointer;
+                outline: none;
+                color: #fff;
+                background-color: #009a9a;
+                border: none;
+                border-radius: 4px;
+                text-decoration: none;
+            }
+        </style>
     </head>
     <body>
         @extends('admin_layout_warga.app')
@@ -80,10 +96,10 @@
                 </div>
                 <div class="form-group">
                     <label for="passwordwarga">Password</label>
-                    <input type="password" class="form-control @error('passwordwarga') is-invalid @enderror" id="passwordwarga" name="passwordwarga" value="{{ old('passwordwarga') ?? '*************' }}">
-                    @error('passwordwarga')
-                    <div class="text-danger">{{ $message }}</div>
-                    @enderror
+                        <input type="password" class="form-control @error('passwordwarga') is-invalid @enderror" id="passwordwarga" name="passwordwarga" value="{{ old('passwordwarga') ?? $wargas->tanggal_lahir }}" placeholder="****************">
+                        @error('passwordwarga')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                 </div>
                 <div class="form-group">
                     <input type="hidden" class="form-control @error('nomorhp') is-invalid @enderror" id="nomorhp" name="nomorhp" value="{{ old('nomorhp') ?? $wargas->nomorhp }}">
@@ -105,4 +121,5 @@
     </div>
     @endsection
     </body>
+    
 </html>

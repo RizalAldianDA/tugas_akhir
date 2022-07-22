@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-group">
                             <label for="passwordket">Password</label>
-                            <input type="password" class="form-control @error('passwordket') is-invalid @enderror" id="passwordket" name="passwordket" value="{{ old('passwordket') ?? '*************' }}">
+                            <input type="password" class="form-control @error('passwordket') is-invalid @enderror" id="passwordket" name="passwordket" value="{{ old('passwordket') ?? $ketua->passwordket }}" placeholder="****************" >
                             @error('passwordket')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
