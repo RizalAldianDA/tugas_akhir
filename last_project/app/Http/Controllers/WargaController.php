@@ -138,10 +138,14 @@ class WargaController extends Controller
         $warga->tanggal_lahir = $validateData['tanggal_lahir'];
         $warga->rt = $validateData['rt'];
         $warga->rw = $validateData['rw'];
-
-        $password = bcrypt($validateData['passwordwarga']);
-        $warga->passwordwarga = $password;
-
+        if($validateData['passwordwarga']!=$warga->passwordwarga)
+        {
+            $password = bcrypt($validateData['passwordwarga']);
+            $warga->passwordwarga = $password;
+        }
+        else{
+            $warga->passwordwarga = $validateData['passwordwarga'];
+        }
         $warga->nomorhp = $validateData['nomorhp'];
         $warga->alamat = $validateData['alamat'];
         $warga->save();
@@ -262,10 +266,14 @@ class WargaController extends Controller
         $warga->tanggal_lahir = $validateData['tanggal_lahir'];
         $warga->rt = $validateData['rt'];
         $warga->rw = $validateData['rw'];
-        
-        $password = bcrypt($validateData['passwordwarga']);
-        $warga->passwordwarga = $password;
-
+        if($validateData['passwordwarga']!=$warga->passwordwarga)
+        {
+            $password = bcrypt($validateData['passwordwarga']);
+            $warga->passwordwarga = $password;
+        }
+        else{
+            $warga->passwordwarga = $validateData['passwordwarga'];
+        }
         $warga->nomorhp = $validateData['nomorhp'];
         $warga->alamat = $validateData['alamat'];
         $warga->status = $validateData['status'];

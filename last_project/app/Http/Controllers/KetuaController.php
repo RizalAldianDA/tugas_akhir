@@ -70,10 +70,14 @@ class KetuaController extends Controller
         $ketua->nik = $validateData['nik'];
         $ketua->nama = $validateData['nama'];
         $ketua->usernameket = $validateData['usernameket'];
-
-        $password = bcrypt($validateData['passwordket']);
-        $ketua->passwordket = $password;
-
+        if($validateData['passwordket']!=$ketua->passwordket)
+        {
+            $password = bcrypt($validateData['passwordket']);
+            $ketua->passwordket = $password;
+        }
+        else{
+            $ketua->passwordket = $validateData['passwordket'];
+        }
         $ketua->rt = $validateData['rt'];
         $ketua->rw = $validateData['rw'];
         $ketua->nomorhp = $validateData['nomor'];
@@ -139,10 +143,14 @@ class KetuaController extends Controller
         'nomorhp' => '',
         ]);
         $ketua->usernameket = $validateData['usernameket'];
-        
-        $password = bcrypt($validateData['passwordket']);
-        $ketua->passwordket = $password;
-
+        if($validateData['passwordket']!=$ketua->passwordket)
+        {
+            $password = bcrypt($validateData['passwordket']);
+            $ketua->passwordket = $password;
+        }
+        else{
+            $ketua->passwordket = $validateData['passwordket'];
+        }
         $ketua->rt = $validateData['rt'];
         $ketua->rw = $validateData['rw'];
         $ketua->nomorhp = $validateData['nomorhp'];
