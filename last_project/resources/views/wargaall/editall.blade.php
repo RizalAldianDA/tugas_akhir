@@ -80,7 +80,7 @@
                 </div>
                 <div class="form-group">
                     <label for="passwordwarga">Password</label>
-                    <input type="text" class="form-control @error('passwordwarga') is-invalid @enderror" id="passwordwarga" name="passwordwarga" value="{{ old('passwordwarga') ?? $wargas->passwordwarga }}">
+                    <input type="password" class="form-control @error('passwordwarga') is-invalid @enderror" id="passwordwarga" name="passwordwarga" value="{{ old('passwordwarga') ?? '*************' }}">
                     @error('passwordwarga')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror

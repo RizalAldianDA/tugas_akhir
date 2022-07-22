@@ -56,7 +56,7 @@
                             <td><a href="{{ route('ketua.show',['ketua' => $akun->id]) }}">{{$akun->nik}}</a></td>
                             <td>{{$akun->nama}}</td>
                             <td>{{$akun->usernameket}}</td>
-                            <td>{{$akun->passwordket}}</td>
+                            <td>{{$akun->passwordket== '' ? 'N/A' : '*************'}}</td>
                             <td>{{$akun->rt}}</td>
                             <td>{{$akun->rw}}</td>
                             <td>{{$akun->nomorhp == '' ? 'N/A' : $akun->nomorhp}}</td>

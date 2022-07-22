@@ -43,7 +43,7 @@
                         <li>NIK: {{$ketua->nik}} </li>
                         <li>Nama: {{$ketua->nama}} </li>
                         <li>Username: {{$ketua->usernameket}} </li>
-                        <li>Password: {{$ketua->passwordket}} </li>
+                        <li>Password: {{$ketua->passwordket== '' ? 'N/A' : '*************'}} </li>
                         <li>RT: {{$ketua->rt}} </li>
                         <li>RW: {{$ketua->rw}} </li>
                         <li>Nomor HP:{{$ketua->nomorhp == '' ? 'N/A' : $ketua->nomorhp}}</li>

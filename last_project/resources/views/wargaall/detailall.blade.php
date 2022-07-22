@@ -40,7 +40,7 @@
                 <li>Tanggal Lahir: {{date('d F Y', strtotime($wargas->tanggal_lahir))}}</li>
                 <li>RT : {{$wargas->rt}}</li>
                 <li>RW : {{$wargas->rw}}</li>
-                <li>Password : {{$wargas->passwordwarga}}</li>
+                <li>Password : {{$wargas->passwordwarga== '' ? 'N/A' : '*************'}}</li>
                 <li>Nomor HP: {{$wargas->nomorhp == '' ? 'N/A' : $wargas->nomorhp}}</li>
                 <li>Alamat: {{$wargas->alamat == '' ? 'N/A' : $wargas->alamat}}</li>
                 <li>Status Covid-19: {{$wargas->status == '' ? 'N/A' : $wargas->status}}</li>
