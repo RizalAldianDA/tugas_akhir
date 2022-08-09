@@ -5,6 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Akun Ketua RT</title>
+        <style>
+            .contain{
+                width: 100%; 
+                border-collapse: collapse; 
+                font-size: 12px;
+                overflow-x: auto;
+            }
+        </style>
     </head>
     <body>
         @extends('admin_layout_ketua.app')
@@ -36,6 +44,7 @@
             </section>
             <!-- Main content -->
             <section class="content">
+                <div class="contain">
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -66,6 +75,7 @@
                         @endforelse
                     </tbody>
                 </table>
+                </div>
         </section> 
         <!-- /.content -->
     </div>

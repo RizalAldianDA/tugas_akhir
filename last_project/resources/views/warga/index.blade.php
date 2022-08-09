@@ -24,6 +24,12 @@
             .row{
                 background-color: white;
             }
+            .contain{
+                width: 100%; 
+                border-collapse: collapse; 
+                font-size: 12px;
+                overflow-x: auto;
+            }
             .content {
                 max-width: 80%; 
                 margin: 0 auto !important; 
@@ -320,6 +326,7 @@
                                     <th>Nomor HP</th>
                                     <th>Alamat</th>
                                     <th>Status Covid 19</th>
+                                    <th>Dimasukan Waktu</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -336,9 +343,10 @@
                                         <td>{{$akun->nomorhp == '' ? 'N/A' : $akun->nomorhp}}</td>
                                         <td>{{$akun->alamat == '' ? 'N/A' : $akun->alamat}}</td>
                                         <td>{{$akun->status == '' ? 'N/A' : $akun->status}}</td>
+                                        <td>{{$akun->created_at}}</td>
                                     </tr>
                                     @empty
-                                        <td colspan="11" class="text-center">Tidak ada data...</td>
+                                        <td colspan="12" class="text-center">Tidak ada data...</td>
                                     @endforelse
                                 </tbody>
                             </table>

@@ -10,6 +10,12 @@
             .graph{
                 height: 100%;
             }
+            .contain{
+                width: 100%; 
+                border-collapse: collapse; 
+                font-size: 12px;
+                overflow-x: auto;
+            }
         </style>
     </head>
     <body>
@@ -59,42 +65,44 @@
                         <input type="hidden" id="result1" value="{{ $result1 ->count()}}">
                         <input type="hidden" id="result2" value="{{ $result2 ->count()}}">
                         <br>
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>NIK</th>
-                                <th>No KK</th>
-                                <th>Nama</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Tanggal Lahir</th>
-                                <th>RT</th>
-                                <th>RW</th>
-                                <th>Nomor HP</th>
-                                <th>Alamat</th>
-                                <th>Status Covid 19</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($wargas as $akun)
+                        <div class="contain">
+                            <table class="table table-striped">
+                                <thead>
                                 <tr>
-                                    <th>{{$loop->iteration}}</th>
-                                    <td><a href="{{ route('wargaall.detailall',['warga' => $akun->nik]) }}">{{$akun->nik}}</a></td>
-                                    <td>{{$akun->nokk}}</td>
-                                    <td>{{$akun->nama}}</td>
-                                    <td>{{$akun->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</td>
-                                    <td>{{$akun->tanggal_lahir}}</td>
-                                    <td>{{$akun->rt}}</td>
-                                    <td>{{$akun->rw}}</td>
-                                    <td>{{$akun->nomorhp == '' ? 'N/A' : $akun->nomorhp}}</td>
-                                    <td>{{$akun->alamat == '' ? 'N/A' : $akun->alamat}}</td>
-                                    <td>{{$akun->status == '' ? 'N/A' : $akun->status}}</td>
+                                    <th>#</th>
+                                    <th>NIK</th>
+                                    <th>No KK</th>
+                                    <th>Nama</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>RT</th>
+                                    <th>RW</th>
+                                    <th>Nomor HP</th>
+                                    <th>Alamat</th>
+                                    <th>Status Covid 19</th>
                                 </tr>
-                                @empty
-                                    <td colspan="11" class="text-center">Tidak ada data...</td>
-                                @endforelse
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @forelse ($wargas as $akun)
+                                    <tr>
+                                        <th>{{$loop->iteration}}</th>
+                                        <td><a href="{{ route('wargaall.detailall',['warga' => $akun->nik]) }}">{{$akun->nik}}</a></td>
+                                        <td>{{$akun->nokk}}</td>
+                                        <td>{{$akun->nama}}</td>
+                                        <td>{{$akun->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</td>
+                                        <td>{{$akun->tanggal_lahir}}</td>
+                                        <td>{{$akun->rt}}</td>
+                                        <td>{{$akun->rw}}</td>
+                                        <td>{{$akun->nomorhp == '' ? 'N/A' : $akun->nomorhp}}</td>
+                                        <td>{{$akun->alamat == '' ? 'N/A' : $akun->alamat}}</td>
+                                        <td>{{$akun->status == '' ? 'N/A' : $akun->status}}</td>
+                                    </tr>
+                                    @empty
+                                        <td colspan="11" class="text-center">Tidak ada data...</td>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                          {{ $wargas->links() }} 
                     </section> 
             <!-- /.content -->

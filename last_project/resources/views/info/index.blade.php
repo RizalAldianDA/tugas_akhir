@@ -18,6 +18,12 @@
                 overflow: hidden;
                 max-width: 100%;
             }
+            .contain{
+                width: 100%; 
+                border-collapse: collapse; 
+                font-size: 12px;
+                overflow-x: auto;
+            }
         </style>
     </head>
     <body>
@@ -50,46 +56,48 @@
             </section>
             <!-- Main content -->
             <section class="content">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Type</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th colspan="2"><center>Action</center></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($infos as $data)
+                <div class="contain">
+                    <table class="table table-striped">
+                        <thead>
                         <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$data->tipe == 'bnp' ? 'Beranda Tanpa Pass' : ($data->tipe == 'bp' ? 'Beranda Dengan Pass' : ($data->tipe == 'ab' ? 'Tentang Kami' : ($data->tipe == 'log' ? 'Login Warga' : 'Login Ketua')))}}</td>
-                            <td>{{$data->title}}</td>
-                            <td><span class="main-text"><p>{{$data->description}}</p></span></td>
-                            <td>{{$data->status}}</td>
-                            <td>
-                                <center>
-                                <a href="{{ route('info.edit',['info' => $data->id]) }}" class="btn btn-primary">Edit
-                                </a>
-                                </center>
-                            </td>
-                            <td>
-                                <center>
-                                <form action="{{ route('info.destroy',['info' => $data->id]) }}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                <button type="submit" class="btn btn-danger ml-3">Delete</button>
-                                </form>
-                                </center>
-                            </td>
+                            <th>#</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th colspan="2"><center>Action</center></th>
                         </tr>
-                        @empty
-                            <td colspan="4" class="text-center">Tidak ada data...</td>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @forelse ($infos as $data)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$data->tipe == 'bnp' ? 'Beranda Tanpa Pass' : ($data->tipe == 'bp' ? 'Beranda Dengan Pass' : ($data->tipe == 'ab' ? 'Tentang Kami' : ($data->tipe == 'log' ? 'Login Warga' : 'Login Ketua')))}}</td>
+                                    <td>{{$data->title}}</td>
+                                    <td><span class="main-text"><p>{{$data->description}}</p></span></td>
+                                    <td>{{$data->status}}</td>
+                                    <td>
+                                        <center>
+                                        <a href="{{ route('info.edit',['info' => $data->id]) }}" class="btn btn-primary">Edit
+                                        </a>
+                                        </center>
+                                    </td>
+                                    <td>
+                                        <center>
+                                        <form action="{{ route('info.destroy',['info' => $data->id]) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                        <button type="submit" class="btn btn-danger ml-3">Delete</button>
+                                        </form>
+                                        </center>
+                                    </td>
+                                </tr>
+                            @empty
+                                <td colspan="4" class="text-center">Tidak ada data...</td>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
         </section> 
         <!-- /.content -->
     </div>

@@ -270,7 +270,7 @@
                                     @endif
                                 </select>
                             <input id="name" class="form-control mr-sm-2" type="text" name="cari" placeholder="Cari" aria-label="Search" value="{{$word}}">
-                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="cari"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-outline-primary my-2 my-sm-0 btn-aksi" type="submit" value="cari"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
                     @if(session()->has('pesan'))
@@ -279,42 +279,46 @@
                         </div>
                         Pencarian Untuk {{$word}}
                     @endif
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>NIK</th>
-                            <th>No KK</th>
-                            <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Tanggal Lahir</th>
-                            <th>RT</th>
-                            <th>RW</th>
-                            <th>Nomor HP</th>
-                            <th>Alamat</th>
-                            <th>Status Covid 19</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($cari as $akun)
-                            <tr>
-                                <th>{{$loop->iteration}}</th>
-                                <td><a href="{{ route('warga.showwarga',['profil' => $akun->nik]) }}">{{$akun->nik}}</a></td>
-                                <td>{{$akun->nokk}}</td>
-                                <td>{{$akun->nama}}</td>
-                                <td>{{$akun->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</td>
-                                <td>{{date('d F Y', strtotime($akun->tanggal_lahir))}}</td>
-                                <td>{{$akun->rt}}</td>
-                                <td>{{$akun->rw}}</td>
-                                <td>{{$akun->nomorhp == '' ? 'N/A' : $akun->nomorhp}}</td>
-                                <td>{{$akun->alamat == '' ? 'N/A' : $akun->alamat}}</td>
-                                <td>{{$akun->status == '' ? 'N/A' : $akun->status}}</td>
-                            </tr>
-                            @empty
-                                <td colspan="10" class="text-center">Tidak ada data...</td>
-                            @endforelse
-                        </tbody>
-                    </table>
+                        <div class="contain">
+                            <br>
+                            <br>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>NIK</th>
+                                    <th>No KK</th>
+                                    <th>Nama</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>RT</th>
+                                    <th>RW</th>
+                                    <th>Nomor HP</th>
+                                    <th>Alamat</th>
+                                    <th>Status Covid 19</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($cari as $akun)
+                                    <tr>
+                                        <th>{{$loop->iteration}}</th>
+                                        <td><a href="{{ route('warga.showwarga',['profil' => $akun->nik]) }}">{{$akun->nik}}</a></td>
+                                        <td>{{$akun->nokk}}</td>
+                                        <td>{{$akun->nama}}</td>
+                                        <td>{{$akun->gender == 'p' ? 'Perempuan' : 'Laki-laki'}}</td>
+                                        <td>{{date('d F Y', strtotime($akun->tanggal_lahir))}}</td>
+                                        <td>{{$akun->rt}}</td>
+                                        <td>{{$akun->rw}}</td>
+                                        <td>{{$akun->nomorhp == '' ? 'N/A' : $akun->nomorhp}}</td>
+                                        <td>{{$akun->alamat == '' ? 'N/A' : $akun->alamat}}</td>
+                                        <td>{{$akun->status == '' ? 'N/A' : $akun->status}}</td>
+                                    </tr>
+                                    @empty
+                                        <td colspan="10" class="text-center">Tidak ada data...</td>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

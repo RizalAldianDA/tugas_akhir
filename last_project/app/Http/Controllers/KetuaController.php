@@ -165,6 +165,8 @@ class KetuaController extends Controller
 		$cari = $request->cari;
  
 		$word = Warga::where($tipe,'LIKE',"%".$cari."%")
+        ->where('rt','=',session('rt'))
+        ->where('rw','=',session('rw'))
         ->get();
 		return view('warga.search',['cari' => $word,'word'=>$cari,'tipe'=>$tipe]);
  

@@ -18,6 +18,12 @@
                 overflow: hidden;
                 max-width: 100%;
             }
+            .contain{
+                width: 100%; 
+                border-collapse: collapse; 
+                font-size: 12px;
+                overflow-x: auto;
+            }
         </style>
     </head>
     <body>
@@ -50,6 +56,7 @@
             </section>
             <!-- Main content -->
             <section class="content">
+                <div class="contain">
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -94,6 +101,7 @@
                         @endforelse
                     </tbody>
                 </table>
+                </div>
         </section> 
         <!-- /.content -->
     </div>

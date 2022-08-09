@@ -96,10 +96,13 @@
                 </div>
                 <div class="form-group">
                     <label for="passwordwarga">Password</label>
-                        <input type="password" class="form-control @error('passwordwarga') is-invalid @enderror" id="passwordwarga" name="passwordwarga" value="{{ old('passwordwarga') ?? $wargas->tanggal_lahir }}" placeholder="****************">
+                    <div class="form-inline">
+                        <input type="password" class="form-control @error('passwordwarga') is-invalid @enderror" id="passwordwarga" name="passwordwarga" value="{{ old('passwordwarga') ?? $wargas->passwordwarga }}" >
+                        <span class="button" onmousedown="mouseDown()" onmouseup="mouseUp()"><i class="fa fa-eye" aria-hidden="true"></i></span>
                         @error('passwordwarga')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
+                    </div>
                 </div>
                 <div class="form-group">
                     <input type="hidden" class="form-control @error('nomorhp') is-invalid @enderror" id="nomorhp" name="nomorhp" value="{{ old('nomorhp') ?? $wargas->nomorhp }}">
@@ -121,5 +124,13 @@
     </div>
     @endsection
     </body>
-    
+    <script>
+        function mouseDown() {
+            $('#passwordwarga').attr('type', 'text');
+        }
+
+        function mouseUp() {
+            $('#passwordwarga').attr('type', 'password');
+        }
+    </script>
 </html>
